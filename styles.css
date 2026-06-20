@@ -192,3 +192,16 @@ footer { border-top: 1px solid var(--hairline); padding-block: 2.6rem 3.4rem; }
 @media (prefers-reduced-motion: reduce) {
   .rise { opacity: 1; transform: none; animation: none; }
 }
+
+/* Calibrate page --------------------------------------------------- */
+.close { padding-block: clamp(1.8rem, 1rem + 2vw, 2.6rem); border-top: 1px solid var(--hairline); }
+.close .clabel { display: block; margin-bottom: 1.1rem; color: var(--slate); }
+.turn-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 1.4rem 0 0.55rem; }
+.contrib { max-width: 64ch; color: var(--muted); }
+.contrib p { margin: 0.45rem 0; }
+.ai-close { max-width: 64ch; background: var(--surface); border: 1px solid var(--hairline); border-radius: 10px; padding: clamp(1rem, 2vw, 1.7rem); }
+.ai-close p { margin: 0.55rem 0; }
+.ai-close p:first-child, .contrib p:first-child { margin-top: 0; }
+.t-head { font-family: var(--grotesk); font-weight: 600; margin-top: 1rem !important; }
+.ai-close ul, .contrib ul { margin: 0.5rem 0; padding-left: 1.2rem; }
+.ai-close li, .contrib li { margin: 0.3rem 0; }
