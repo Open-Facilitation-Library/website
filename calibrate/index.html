@@ -22,25 +22,39 @@
       </nav>
     </header>
     <main>
-      <section class="hero">
-        <p class="eyebrow rise">Calibration</p>
-        <h1 class="rise">Judge the closes.</h1>
-        <p class="lead rise">Below are real closing turns from AI-facilitated conversations. Read each one and decide whether it is a strong or weak close. Your judgments become the open evaluation every AI facilitator is measured against.</p>
+      <section class="calib-intro">
+        <p class="eyebrow">Calibration</p>
+        <h1>Judge the closes.</h1>
+        <p class="lead">Read each closing turn and mark it strong or weak. Your judgments become the open evaluation every AI facilitator is measured against. Submitting opens a pre-filled issue on GitHub, so your labels stay in the commons.</p>
+        <details class="rubric">
+          <summary>What counts as a strong close</summary>
+          <p>A <strong>strong close</strong> reflects the participant's own specific points back to them and offers a quick checkpoint to confirm or correct before treating the conversation as finished. A <strong>weak close</strong> summarizes without checking, or returns a generic "would you like to continue, or shall I summarize?" after the person has clearly signalled they are done. If you would draw the line differently, note it when you submit.</p>
+        </details>
       </section>
-      <section class="block">
-        <p class="eyebrow">The standard</p>
-        <h2>What counts as a strong close.</h2>
-        <p class="prose">A <strong>strong close</strong> reflects the participant's own specific points back to them, the actual things they said, and offers a quick checkpoint to confirm or correct before treating the conversation as finished. A <strong>weak close</strong> either summarizes without checking, or, after the person has clearly signalled they are done, returns a generic "would you like to continue, or shall I summarize?" instead. If you would draw the line differently, say so when you submit.</p>
-      </section>
-      <section class="block">
-        <p class="eyebrow">The closes</p>
-        <h2>11 real closes.</h2>
-        <p class="prose muted">Closes 1 to 9 are in English; the last 2 are in Italian and Hungarian. Skip any language you do not read.</p>
-        <article class="close">
-          <p class="eyebrow clabel">Close 1 &middot; CIBC Demo Day Participation</p>
-          <p class="turn-label">What the participant said</p>
-          <div class="contrib">
-            <p>Collaboration under Constraint is a platform for co-operation that allows different strategies of constraint to create project workflows from forming to completion.</p>
+      <ol class="closes">
+        <li class="jcard" data-i="0">
+          <div class="jcard-head">
+            <span class="jnum">01</span>
+            <span class="jtopic">CIBC Demo Day Participation</span>
+          </div>
+          <div class="ai-close">
+            <p class="t-head">Thanks for walking through your demo application</p>
+              <p>Here's your points summarised:</p>
+              <ul>
+              <li><strong>Project</strong>: Collaboration under Constraint — a platform for co-operation that uses different constraint strategies to create project workflows from forming to completion</li>
+              <li><strong>Stage</strong>: Working demo available at [url] Example strategy: lottocratic editor selection for ezine publishing with fixed deadlines, minimal discussion, and merit allocation</li>
+              <li><strong>Audience &amp; problem</strong>: Groups wanting to collaborate on projects (like writing articles or editing small magazines) while avoiding endless discussion and deliberation — focusing instead on achieving goals as set by the initiative creator. The platform formalises commitments and requires collective support for promotion</li>
+              <li><strong>Demo format</strong>: Theoretical background on constraints + recorded demo of the app in action</li>
+              <li><strong>Success criteria</strong>: People finding the presentation insightful and wanting to try it with their group as an experiment in formalising commitments</li>
+              <li><strong>Call to action</strong>: Try the app (specific landing page/action to be shared during demo)</li>
+              <li><strong>Prep needs</strong>: None requested</li>
+              </ul>
+              <p>We'll get back to you within a week to confirm whether you're on for Day Zero (tentatively first or second week of June 2026) or queued for a future demo day. Remember, there are only 5 slots for the first event, so being queued isn't a rejection — it's just the reality of a recurring series.</p>
+          </div>
+          <details class="contrib-d">
+            <summary>What the participant said</summary>
+            <div class="contrib">
+              <p>Collaboration under Constraint is a platform for co-operation that allows different strategies of constraint to create project workflows from forming to completion.</p>
               <p>One of the strategies is used for publishing ezines - it elects a temporary editor through lottocracy and then guides members to submit articles, publishes the ezine and requires sharing on social media.  It minimises discussions, sets fixed unmovable deadlines, allocates positive or negative merit.</p>
               <p>It works and there's also a demo.</p>
               <p>it works and there's a demo</p>
@@ -57,37 +71,19 @@
               <p>They can try the app</p>
               <p>I'll share that in the demo</p>
               <p>no</p>
+            </div>
+          </details>
+          <div class="judge" role="group" aria-label="Your judgment">
+            <button type="button" class="opt" data-r="Strong">Strong</button>
+            <button type="button" class="opt" data-r="Weak">Weak</button>
+            <input type="text" class="why" maxlength="160" placeholder="why? (one line, optional)" aria-label="Why" />
           </div>
-          <p class="turn-label">The AI&#8217;s closing turn</p>
-          <div class="ai-close">
-            <p class="t-head">Thanks for walking through your demo application</p>
-              <p>Here's your points summarised:</p>
-              <ul>
-              <li><strong>Project</strong>: Collaboration under Constraint — a platform for co-operation that uses different constraint strategies to create project workflows from forming to completion</li>
-              <li><strong>Stage</strong>: Working demo available at [url] Example strategy: lottocratic editor selection for ezine publishing with fixed deadlines, minimal discussion, and merit allocation</li>
-              <li><strong>Audience &amp; problem</strong>: Groups wanting to collaborate on projects (like writing articles or editing small magazines) while avoiding endless discussion and deliberation — focusing instead on achieving goals as set by the initiative creator. The platform formalises commitments and requires collective support for promotion</li>
-              <li><strong>Demo format</strong>: Theoretical background on constraints + recorded demo of the app in action</li>
-              <li><strong>Success criteria</strong>: People finding the presentation insightful and wanting to try it with their group as an experiment in formalising commitments</li>
-              <li><strong>Call to action</strong>: Try the app (specific landing page/action to be shared during demo)</li>
-              <li><strong>Prep needs</strong>: None requested</li>
-              </ul>
-              <p>We'll get back to you within a week to confirm whether you're on for Day Zero (tentatively first or second week of June 2026) or queued for a future demo day. Remember, there are only 5 slots for the first event, so being queued isn't a rejection — it's just the reality of a recurring series.</p>
+        </li>
+        <li class="jcard" data-i="1">
+          <div class="jcard-head">
+            <span class="jnum">02</span>
+            <span class="jtopic">Does the Scenius need a treasury?</span>
           </div>
-        </article>
-        <article class="close">
-          <p class="eyebrow clabel">Close 2 &middot; Does the Scenius need a treasury?</p>
-          <p class="turn-label">What the participant said</p>
-          <div class="contrib">
-            <p>Let's begin.</p>
-              <p>Multiple events happening every week, popular newsletter and YouTube channel, healthy treasury formed by grants, donations and membership fees, most importantly - high contribution rate and clear contribution pathways</p>
-              <p>I'm obviously biased but I believe the former is the only way to increase participation and contribution rates</p>
-              <p>Not sure, can you give me some examples?</p>
-              <p>Governance overhead, "additional bureaucracy", risk of "community becoming more transactional"</p>
-              <p>Increased participation / contribution rates</p>
-              <p>Apathy feels very high, not sure if anything can change it among existing members - perhaps the only way to improve community health is onboarding fresh blood</p>
-              <p>We need to create some tangible value for members</p>
-          </div>
-          <p class="turn-label">The AI&#8217;s closing turn</p>
           <div class="ai-close">
             <p>Perfect. Thanks so much for sharing your perspective, Participant A! 🙏</p>
               <p>Here's what I heard from you:</p>
@@ -102,12 +98,45 @@
               </ul>
               <p>Your insights will help shape the broader conversation. Thanks for your time!</p>
           </div>
-        </article>
-        <article class="close">
-          <p class="eyebrow clabel">Close 3 &middot; AI Fishbowl Feedback</p>
-          <p class="turn-label">What the participant said</p>
-          <div class="contrib">
-            <p>I was hoping to get the perspective of a more diverse group of people on AI , on how they see it, on how they use it, on how they feel about the technology.</p>
+          <details class="contrib-d">
+            <summary>What the participant said</summary>
+            <div class="contrib">
+              <p>Let's begin.</p>
+              <p>Multiple events happening every week, popular newsletter and YouTube channel, healthy treasury formed by grants, donations and membership fees, most importantly - high contribution rate and clear contribution pathways</p>
+              <p>I'm obviously biased but I believe the former is the only way to increase participation and contribution rates</p>
+              <p>Not sure, can you give me some examples?</p>
+              <p>Governance overhead, "additional bureaucracy", risk of "community becoming more transactional"</p>
+              <p>Increased participation / contribution rates</p>
+              <p>Apathy feels very high, not sure if anything can change it among existing members - perhaps the only way to improve community health is onboarding fresh blood</p>
+              <p>We need to create some tangible value for members</p>
+            </div>
+          </details>
+          <div class="judge" role="group" aria-label="Your judgment">
+            <button type="button" class="opt" data-r="Strong">Strong</button>
+            <button type="button" class="opt" data-r="Weak">Weak</button>
+            <input type="text" class="why" maxlength="160" placeholder="why? (one line, optional)" aria-label="Why" />
+          </div>
+        </li>
+        <li class="jcard" data-i="2">
+          <div class="jcard-head">
+            <span class="jnum">03</span>
+            <span class="jtopic">AI Fishbowl Feedback</span>
+          </div>
+          <div class="ai-close">
+            <p class="t-head">Thank you for sharing your feedback and reflections</p>
+              <p>Here's your points summarised:</p>
+              <ul>
+              <li>You came looking for breadth of perspectives on AI - hearing directly from humans rather than just reading online content - and your expectations were met</li>
+              <li>The format works for giving everyone a voice, but needs tighter moderation to keep "megaphone people" from dominating and to keep discussion on track</li>
+              <li>Your advice: keep the fishbowl format, but narrow the scope to a specific branch/sector/application of AI, and intervene politely when people ramble off-topic</li>
+              <li>Main takeaway: seeing how people from different walks of life have different views, uses, and emotions related to AI technology</li>
+              </ul>
+              <p>Your input will help shape how we design and run future events. Thanks again for taking the time to reflect with me.</p>
+          </div>
+          <details class="contrib-d">
+            <summary>What the participant said</summary>
+            <div class="contrib">
+              <p>I was hoping to get the perspective of a more diverse group of people on AI , on how they see it, on how they use it, on how they feel about the technology.</p>
               <p>I wasn't looking for anything 'specifically', I just wanted breadth of perspectives rather than the depth that surrounds me at the moment. It's slightly unrealistic to 'know' what I'm missing if i'm missing it.</p>
               <p>I wouldn't say I was surprised, it was a lot of information that already exists online around the topic, but hearing it directly from a human did well to reveal the face behind the usual text seen on the internet. I'd say the expectations were met at the event.</p>
               <p>I wouldn't say there was an ah-ha moment for me, but to be honest I spaced out a lot during this event 🙄</p>
@@ -120,31 +149,19 @@
               <p>Your question makes no sense, if I'm looking for 'breadth', why would you conclude that I'd be 'interested in events that go deeper into specific applications'? I think these events are perfect for perspective since it gives a voice to everyone in the room.</p>
               <p>Keeping the discussion a given track.</p>
               <p>The main take away is that people from different walks of life have different views, different uses, and different emotions related to the technology.</p>
+            </div>
+          </details>
+          <div class="judge" role="group" aria-label="Your judgment">
+            <button type="button" class="opt" data-r="Strong">Strong</button>
+            <button type="button" class="opt" data-r="Weak">Weak</button>
+            <input type="text" class="why" maxlength="160" placeholder="why? (one line, optional)" aria-label="Why" />
           </div>
-          <p class="turn-label">The AI&#8217;s closing turn</p>
-          <div class="ai-close">
-            <p class="t-head">Thank you for sharing your feedback and reflections</p>
-              <p>Here's your points summarised:</p>
-              <ul>
-              <li>You came looking for breadth of perspectives on AI - hearing directly from humans rather than just reading online content - and your expectations were met</li>
-              <li>The format works for giving everyone a voice, but needs tighter moderation to keep "megaphone people" from dominating and to keep discussion on track</li>
-              <li>Your advice: keep the fishbowl format, but narrow the scope to a specific branch/sector/application of AI, and intervene politely when people ramble off-topic</li>
-              <li>Main takeaway: seeing how people from different walks of life have different views, uses, and emotions related to AI technology</li>
-              </ul>
-              <p>Your input will help shape how we design and run future events. Thanks again for taking the time to reflect with me.</p>
+        </li>
+        <li class="jcard" data-i="3">
+          <div class="jcard-head">
+            <span class="jnum">04</span>
+            <span class="jtopic">What should the public sensemaking sessions be about?</span>
           </div>
-        </article>
-        <article class="close">
-          <p class="eyebrow clabel">Close 4 &middot; What should the public sensemaking sessions be about?</p>
-          <p class="turn-label">What the participant said</p>
-          <div class="contrib">
-            <p>How might we scale inclusive, trustworthy collective sensemaking with AI to strengthen our commons, boost solidarity and tackle the metacrisis?</p>
-              <p>What concrete governance, design, and accountability practices must be in place for AI-assisted collective sensemaking?</p>
-              <p>AI ethicists/researchers, product/engineering leads, policymakers, civil-society reps (including marginalized groups), community organizers, journalists, independent auditors, and cross-sector facilitators. A useful outcome would be a concrete blueprint for AI-assisted sensemaking (principles, accountability metrics, risk mitigations) plus a ready-to-run public sensemaking protocol.</p>
-              <p>What's next after left vs right divide - how to build coherence across fragmented memetic tribes and what's the role of traditional belief systems in all this</p>
-              <p>How can we build coherence while respectfully integrating traditional belief systems, and what concrete steps would enable such public discourse?</p>
-          </div>
-          <p class="turn-label">The AI&#8217;s closing turn</p>
           <div class="ai-close">
             <p>Got it — that's a strong second topic. Here's a summary of what you've contributed to the panel:</p>
               <p><strong>Participant A's topics:</strong></p>
@@ -154,12 +171,39 @@
               </ul>
               <p>Thanks so much, Participant A — this is exactly the kind of input that shapes what Facilitator takes public first. We'll email the aggregate to &lt;email&gt; when the week closes.</p>
           </div>
-        </article>
-        <article class="close">
-          <p class="eyebrow clabel">Close 5 &middot; What should the public sensemaking sessions be about?</p>
-          <p class="turn-label">What the participant said</p>
-          <div class="contrib">
-            <p>how to overcome the metacrisis / evolve spiritually quickly enough before we kill ourselves with unaccountable politicians, technology that isn't aware of its externalities and corruption</p>
+          <details class="contrib-d">
+            <summary>What the participant said</summary>
+            <div class="contrib">
+              <p>How might we scale inclusive, trustworthy collective sensemaking with AI to strengthen our commons, boost solidarity and tackle the metacrisis?</p>
+              <p>What concrete governance, design, and accountability practices must be in place for AI-assisted collective sensemaking?</p>
+              <p>AI ethicists/researchers, product/engineering leads, policymakers, civil-society reps (including marginalized groups), community organizers, journalists, independent auditors, and cross-sector facilitators. A useful outcome would be a concrete blueprint for AI-assisted sensemaking (principles, accountability metrics, risk mitigations) plus a ready-to-run public sensemaking protocol.</p>
+              <p>What's next after left vs right divide - how to build coherence across fragmented memetic tribes and what's the role of traditional belief systems in all this</p>
+              <p>How can we build coherence while respectfully integrating traditional belief systems, and what concrete steps would enable such public discourse?</p>
+            </div>
+          </details>
+          <div class="judge" role="group" aria-label="Your judgment">
+            <button type="button" class="opt" data-r="Strong">Strong</button>
+            <button type="button" class="opt" data-r="Weak">Weak</button>
+            <input type="text" class="why" maxlength="160" placeholder="why? (one line, optional)" aria-label="Why" />
+          </div>
+        </li>
+        <li class="jcard" data-i="4">
+          <div class="jcard-head">
+            <span class="jnum">05</span>
+            <span class="jtopic">What should the public sensemaking sessions be about?</span>
+          </div>
+          <div class="ai-close">
+            <p>Thanks, Participant A — here's what you contributed to the panel:</p>
+              <ul>
+              <li><strong>Governance redesign across scales:</strong> <em>How could we redesign governance, both locally and globally.</em> — with frontline workers and marginalized communities in the room, aiming for grounded principles and a concrete pilot plan.</li>
+              <li><strong>Online community governance:</strong> <em>How do we make online communities genuinely self-governing rather than feudal?</em> — drawing on Schneider's framework of democratic accountability in online spaces.</li>
+              </ul>
+              <p>We'll send the aggregate of all panel responses to &lt;email&gt; once the week closes. Really appreciate your input — it's exactly the kind of grounded, specific framing that makes public deliberation useful.</p>
+          </div>
+          <details class="contrib-d">
+            <summary>What the participant said</summary>
+            <div class="contrib">
+              <p>how to overcome the metacrisis / evolve spiritually quickly enough before we kill ourselves with unaccountable politicians, technology that isn't aware of its externalities and corruption</p>
               <p>not sure</p>
               <p>politicians</p>
               <p>how could we redesign our governance, both on local and global level</p>
@@ -173,32 +217,19 @@
               <p>something in line with the book</p>
               <p>sounds good</p>
               <p>enough</p>
+            </div>
+          </details>
+          <div class="judge" role="group" aria-label="Your judgment">
+            <button type="button" class="opt" data-r="Strong">Strong</button>
+            <button type="button" class="opt" data-r="Weak">Weak</button>
+            <input type="text" class="why" maxlength="160" placeholder="why? (one line, optional)" aria-label="Why" />
           </div>
-          <p class="turn-label">The AI&#8217;s closing turn</p>
-          <div class="ai-close">
-            <p>Thanks, Participant A — here's what you contributed to the panel:</p>
-              <ul>
-              <li><strong>Governance redesign across scales:</strong> <em>How could we redesign governance, both locally and globally.</em> — with frontline workers and marginalized communities in the room, aiming for grounded principles and a concrete pilot plan.</li>
-              <li><strong>Online community governance:</strong> <em>How do we make online communities genuinely self-governing rather than feudal?</em> — drawing on Schneider's framework of democratic accountability in online spaces.</li>
-              </ul>
-              <p>We'll send the aggregate of all panel responses to &lt;email&gt; once the week closes. Really appreciate your input — it's exactly the kind of grounded, specific framing that makes public deliberation useful.</p>
+        </li>
+        <li class="jcard" data-i="5">
+          <div class="jcard-head">
+            <span class="jnum">06</span>
+            <span class="jtopic">What should the public sensemaking sessions be about?</span>
           </div>
-        </article>
-        <article class="close">
-          <p class="eyebrow clabel">Close 6 &middot; What should the public sensemaking sessions be about?</p>
-          <p class="turn-label">What the participant said</p>
-          <div class="contrib">
-            <p>I think this question is wrong.  I want the public sessions to be a good marketing and input for Facilitator as a product.  So we need questions that are engaging, tractable, and we can find interesting disagreement (and agreement) in.</p>
-              <p>How should schools change in a world with AI?  Both in what they teach kids and in how they teach?</p>
-              <p>Who - lots of parents, some recent high school and college grads, traditional employers and founders in very new companies, and a few teachers (but no school administrators)</p>
-              <p>Outcome:  I'd like to see a lot of crazy ideas, but also one or two small things we could change quickly (if not easily) or in one school at a time</p>
-              <p>Why is housing so expensive in so many important cities?  In the US but also across the UK and Europe, and some of Latin America.  There's lots of theories, and some of them are wrong</p>
-              <p>I think my last phrasing is the right one - "Why is housing so expensive in so many important cities?"</p>
-              <p>What do we need to do to allow kids to have more independence, to grow and take risks?</p>
-              <p>What can cities do to restore a sense of order and safety?</p>
-              <p>I'm happy to stop there</p>
-          </div>
-          <p class="turn-label">The AI&#8217;s closing turn</p>
           <div class="ai-close">
             <p>Thanks so much, Participant A — this is really valuable input. Here's a summary of your topics:</p>
               <ul>
@@ -209,12 +240,38 @@
               </ul>
               <p>We'll send you the aggregate once the panel week closes — and you'll be first invited when these sessions go live!</p>
           </div>
-        </article>
-        <article class="close">
-          <p class="eyebrow clabel">Close 7 &middot; Story Harvest on Democratic Resilience in Europe</p>
-          <p class="turn-label">What the participant said</p>
-          <div class="contrib">
-            <p>Hope Box is about to visualize one's ideal picture of the future in order to motivate that person to act in favor of the imagined goal. The theory is based on brain science: visual perception is a tool that human brain considers as reality, and positive messages are motivating the audience to act. We created Hope Box in Hungary to let people believe in a brighter future for the country and for themselves - the final goal was to motivate them to break out from the common apathy and to let them start acting. Our project is based on "hope-based communications" by Thomas Coombes ([url]).</p>
+          <details class="contrib-d">
+            <summary>What the participant said</summary>
+            <div class="contrib">
+              <p>I think this question is wrong.  I want the public sessions to be a good marketing and input for Facilitator as a product.  So we need questions that are engaging, tractable, and we can find interesting disagreement (and agreement) in.</p>
+              <p>How should schools change in a world with AI?  Both in what they teach kids and in how they teach?</p>
+              <p>Who - lots of parents, some recent high school and college grads, traditional employers and founders in very new companies, and a few teachers (but no school administrators)</p>
+              <p>Outcome:  I'd like to see a lot of crazy ideas, but also one or two small things we could change quickly (if not easily) or in one school at a time</p>
+              <p>Why is housing so expensive in so many important cities?  In the US but also across the UK and Europe, and some of Latin America.  There's lots of theories, and some of them are wrong</p>
+              <p>I think my last phrasing is the right one - "Why is housing so expensive in so many important cities?"</p>
+              <p>What do we need to do to allow kids to have more independence, to grow and take risks?</p>
+              <p>What can cities do to restore a sense of order and safety?</p>
+              <p>I'm happy to stop there</p>
+            </div>
+          </details>
+          <div class="judge" role="group" aria-label="Your judgment">
+            <button type="button" class="opt" data-r="Strong">Strong</button>
+            <button type="button" class="opt" data-r="Weak">Weak</button>
+            <input type="text" class="why" maxlength="160" placeholder="why? (one line, optional)" aria-label="Why" />
+          </div>
+        </li>
+        <li class="jcard" data-i="6">
+          <div class="jcard-head">
+            <span class="jnum">07</span>
+            <span class="jtopic">Story Harvest on Democratic Resilience in Europe</span>
+          </div>
+          <div class="ai-close">
+            <p>Yes, we're done! 🎉 Your story will be synthesized with others from across the EUDEM network to strengthen democratic resilience and inspire participatory practices throughout Europe. Thanks again for your time and for sharing the Hope Box journey, Participant A — and congratulations on what you and [name] built! 🌟</p>
+          </div>
+          <details class="contrib-d">
+            <summary>What the participant said</summary>
+            <div class="contrib">
+              <p>Hope Box is about to visualize one's ideal picture of the future in order to motivate that person to act in favor of the imagined goal. The theory is based on brain science: visual perception is a tool that human brain considers as reality, and positive messages are motivating the audience to act. We created Hope Box in Hungary to let people believe in a brighter future for the country and for themselves - the final goal was to motivate them to break out from the common apathy and to let them start acting. Our project is based on "hope-based communications" by Thomas Coombes ([url]).</p>
               <p>We collected messages via email, we also sent out Google forms with questions guiding towards a vision for the future, and   used AI picture generator tools if</p>
               <p>I didn't finish my last reply. I'll recollect my thoughts and will do it now: In the Hope Box project we collected messages via email, we also sent out Google forms with questions guiding towards a vision for the future, and we made prompts for these messages and responses. We used AI picture generator and sent back the pics to the participant. We also received photos and AI generated pics or even short AI videos as well. We made a collage of all this after grouping them based on the subject. Our ppt of the project (in Hungarian) is here: &lt;profile-link&gt;</p>
               <p>It was totally online campaign, we reached out to our family members and friends. We hired a graphic designer for the visuals, but all the messages were made by the two of us ([name] and me). We received inputs from about 25 persons. This was a pilot program so didn't plan to reach many people but wanted to give this project a try. Hope Box doesn't have phisycal presence, although we have a noce and colorful box for the ideas that we used at the NECE Festival in Oslo when we presented our project. Due to lack of funds we don't have webpage but a Facebook page: &lt;profile-link&gt;</p>
@@ -226,23 +283,19 @@
               <p>It was quite a surprise for me that imagination and revolutionary ideas are not a matter of education. When one can use imagination, there is no limit! And this is our main goal: don't limit ourselves, let's imagine the best for ourselves and let's start to do thing happpen in a way that enables us to reach our goal. It is always up to us. Even with Hope Box - I mean the pilot program. I didn't believe I could really have a share in the success, but I really did :)</p>
               <p>Positive thinking is essential, finding solutions to our problems is also crucial, but don't we ever forget that humans are built to enjoy life, so let's not limit our imagination!</p>
               <p>It's ok. Are we done?</p>
+            </div>
+          </details>
+          <div class="judge" role="group" aria-label="Your judgment">
+            <button type="button" class="opt" data-r="Strong">Strong</button>
+            <button type="button" class="opt" data-r="Weak">Weak</button>
+            <input type="text" class="why" maxlength="160" placeholder="why? (one line, optional)" aria-label="Why" />
           </div>
-          <p class="turn-label">The AI&#8217;s closing turn</p>
-          <div class="ai-close">
-            <p>Yes, we're done! 🎉 Your story will be synthesized with others from across the EUDEM network to strengthen democratic resilience and inspire participatory practices throughout Europe. Thanks again for your time and for sharing the Hope Box journey, Participant A — and congratulations on what you and [name] built! 🌟</p>
+        </li>
+        <li class="jcard" data-i="7">
+          <div class="jcard-head">
+            <span class="jnum">08</span>
+            <span class="jtopic">Team Topologies Assessment</span>
           </div>
-        </article>
-        <article class="close">
-          <p class="eyebrow clabel">Close 8 &middot; Team Topologies Assessment</p>
-          <p class="turn-label">What the participant said</p>
-          <div class="contrib">
-            <p>Open Facilitation Library is mostly stream-aligned: we help researchers and facilitators translate their expertise into AI-friendly artifacts (e.g. skills and evals), test different tools, and organize seminars. We also do a bit of enabling work when other groups need support on governance design or process facilitation.</p>
-              <p>Mostly through collaboration and a bit of x-as-a-service: other groups come to us when they need facilitation support, evaluation design, or help turning tacit expertise into reusable artifacts. Friction tends to show up when expectations are vague — people often want “light help” but the actual need is deeper process design, so scoping and ownership can get blurry.</p>
-              <p>Cognitive overload mostly comes from context switching across many small requests, each with different domains and no shared template, plus having to translate between research, facilitation, and product/tooling language. The most misaligned responsibility is acting as an informal “help desk” for governance/process questions when we’re also trying to build reusable artifacts and run experiments.</p>
-              <p>all of that sounds great</p>
-              <p>I’d pilot a simple intake/triage process first, with one short form that forces a clear ask, expected depth, and owner before we accept the work. That would probably cut the most context switching fastest and make the rest of the service catalog easier to define.</p>
-          </div>
-          <p class="turn-label">The AI&#8217;s closing turn</p>
           <div class="ai-close">
             <p class="t-head">Thank you for sharing your perspective</p>
               <p>Here’s your points summarised:</p>
@@ -260,23 +313,27 @@
               </ul>
               <p>Your input will be synthesized with other participants’ responses to inform improvements across the ecosystem. ✅</p>
           </div>
-        </article>
-        <article class="close">
-          <p class="eyebrow clabel">Close 9 &middot; Does the Scenius need a treasury?</p>
-          <p class="turn-label">What the participant said</p>
-          <div class="contrib">
-            <p>Members that come together with energy to share what they build receive feedback, co-write pieces together, build stuff together. There is an healthy onboarding process where people can smoothly engage.</p>
-              <p>A place where smaller crew gets form, people meet fellow-minded to spin off initiative from it</p>
-              <p>I think at our current level of engagement we cannot sustain a centralized treasury, it would choke the community into admin burden instead of blowing on the life sparks that can only grow in informality</p>
-              <p>A fizzling out, lack of engagement because it's easy to join without ever contributing bcse  nothing is expected of you, an it's easy to leave / downgrade engagement</p>
-              <p>It's also not where most of the ebergy is bcse you can't get compensated for your work</p>
-              <p>A stronger sense of direction, a team of people I could see move the project forward, stronger sustained activity in the group, stronger consensus in the group that this is what we want to do (seting up fiscal sponsor, chasing grants, etc.)</p>
-              <p>I think we are far from the ceiling of uncompensated work</p>
-              <p>It also doesn't seem to present much benefit VS having a small group spinning off</p>
-              <p>That's a real question, maybe recongizing the treasury is not blocked forever, but it's just not ripe now</p>
-              <p>It's all</p>
+          <details class="contrib-d">
+            <summary>What the participant said</summary>
+            <div class="contrib">
+              <p>Open Facilitation Library is mostly stream-aligned: we help researchers and facilitators translate their expertise into AI-friendly artifacts (e.g. skills and evals), test different tools, and organize seminars. We also do a bit of enabling work when other groups need support on governance design or process facilitation.</p>
+              <p>Mostly through collaboration and a bit of x-as-a-service: other groups come to us when they need facilitation support, evaluation design, or help turning tacit expertise into reusable artifacts. Friction tends to show up when expectations are vague — people often want “light help” but the actual need is deeper process design, so scoping and ownership can get blurry.</p>
+              <p>Cognitive overload mostly comes from context switching across many small requests, each with different domains and no shared template, plus having to translate between research, facilitation, and product/tooling language. The most misaligned responsibility is acting as an informal “help desk” for governance/process questions when we’re also trying to build reusable artifacts and run experiments.</p>
+              <p>all of that sounds great</p>
+              <p>I’d pilot a simple intake/triage process first, with one short form that forces a clear ask, expected depth, and owner before we accept the work. That would probably cut the most context switching fastest and make the rest of the service catalog easier to define.</p>
+            </div>
+          </details>
+          <div class="judge" role="group" aria-label="Your judgment">
+            <button type="button" class="opt" data-r="Strong">Strong</button>
+            <button type="button" class="opt" data-r="Weak">Weak</button>
+            <input type="text" class="why" maxlength="160" placeholder="why? (one line, optional)" aria-label="Why" />
           </div>
-          <p class="turn-label">The AI&#8217;s closing turn</p>
+        </li>
+        <li class="jcard" data-i="8">
+          <div class="jcard-head">
+            <span class="jnum">09</span>
+            <span class="jtopic">Does the Scenius need a treasury?</span>
+          </div>
           <div class="ai-close">
             <p>Thanks Participant A, this was sharp and grounded. Here's a summary of your key positions:</p>
               <ul>
@@ -288,12 +345,48 @@
               <li><strong>Above all: protect what's alive.</strong> Don't let structure kill the sparks that informal collaboration makes possible.</li>
               </ul>
           </div>
-        </article>
-        <article class="close">
-          <p class="eyebrow clabel">Close 10 &middot; Story Harvest on Democratic Resilience in Europe &middot; in Italian</p>
-          <p class="turn-label">What the participant said</p>
-          <div class="contrib">
-            <p>Let's begin.</p>
+          <details class="contrib-d">
+            <summary>What the participant said</summary>
+            <div class="contrib">
+              <p>Members that come together with energy to share what they build receive feedback, co-write pieces together, build stuff together. There is an healthy onboarding process where people can smoothly engage.</p>
+              <p>A place where smaller crew gets form, people meet fellow-minded to spin off initiative from it</p>
+              <p>I think at our current level of engagement we cannot sustain a centralized treasury, it would choke the community into admin burden instead of blowing on the life sparks that can only grow in informality</p>
+              <p>A fizzling out, lack of engagement because it's easy to join without ever contributing bcse  nothing is expected of you, an it's easy to leave / downgrade engagement</p>
+              <p>It's also not where most of the ebergy is bcse you can't get compensated for your work</p>
+              <p>A stronger sense of direction, a team of people I could see move the project forward, stronger sustained activity in the group, stronger consensus in the group that this is what we want to do (seting up fiscal sponsor, chasing grants, etc.)</p>
+              <p>I think we are far from the ceiling of uncompensated work</p>
+              <p>It also doesn't seem to present much benefit VS having a small group spinning off</p>
+              <p>That's a real question, maybe recongizing the treasury is not blocked forever, but it's just not ripe now</p>
+              <p>It's all</p>
+            </div>
+          </details>
+          <div class="judge" role="group" aria-label="Your judgment">
+            <button type="button" class="opt" data-r="Strong">Strong</button>
+            <button type="button" class="opt" data-r="Weak">Weak</button>
+            <input type="text" class="why" maxlength="160" placeholder="why? (one line, optional)" aria-label="Why" />
+          </div>
+        </li>
+        <li class="jcard" data-i="9">
+          <div class="jcard-head">
+            <span class="jnum">10</span>
+            <span class="jtopic">Story Harvest on Democratic Resilience in Europe <span class="jlang">Italian</span></span>
+          </div>
+          <div class="ai-close">
+            <p>Grazie mille, Participant A, per aver condiviso la tua storia con noi!</p>
+              <p>Ecco un riepilogo dei tuoi punti principali:</p>
+              <ul>
+              <li><strong>Organizzazione e innovazione</strong>: Europiamo ETS è una rete di giovani e enti che crea spazi di partecipazione e rappresentanza politica attraverso progetti residenziali, festival (come "Uè Giovane" a Torino) e iniziative come YC - Youth Consult, Cooperate, Co-create</li>
+              <li><strong>Definizione di democrazia</strong>: Coinvolgere il più largo numero di persone nelle decisioni, rendendo i giovani non destinatari passivi ma protagonisti attivi nella creazione delle politiche — incarnato concretamente nel Manifesto delle Consulte Giovanili italiane</li>
+              <li><strong>Sfide affrontate</strong>: Portare intorno a un tavolo consulte giovanili diverse, con bisogni ed esperienze differenti, in assenza di una legge unica — superate grazie all'educazione non formale come strumento per creare connessioni umane autentiche</li>
+              <li><strong>Consigli per replicare</strong>: Usare metodi di educazione non formale (come le liberating structures), fare rete e adottare buone pratiche già esistenti, e sfruttare le opportunità e risorse europee disponibili</li>
+              <li><strong>Risorse</strong>: europiamo.org — con sezioni dedicate al Manifesto delle Consulte Giovanili, Erasmus Coalition e il progetto Generazione E</li>
+              </ul>
+              <p>La tua storia sarà sintetizzata con quelle degli altri partecipanti della rete EUDEM per rafforzare la resilienza democratica e ispirare pratiche partecipative in tutta Europa. 🌍</p>
+          </div>
+          <details class="contrib-d">
+            <summary>What the participant said</summary>
+            <div class="contrib">
+              <p>Let's begin.</p>
               <p>Europiamo ETS è una rete di giovani e di enti, insieme per creare una nuova coscienza sull'Europa e sulla democrazia! Vogliamo condividere concretamente le opportunità europee per i giovani e lo facciamo creando spazi di partecipazione e di rappresentanza politica</p>
               <p>Non siamo un "centro servizi", siamo un gruppo di Youth worker che creano progetti mettendo le persone al centro. Ad esempio, organizziamo eventi, progetti residenziali. In generale, momenti di comunità e dialogo</p>
               <p>Ho visto un progetto nello specifico (YC - Youth Consult, Cooperate, Co-create) che ha raccolto diversi giovani intorno al tema della partecipazione giovanile. Dopo quel progetto, la rete di giovani è rimasta e le amicizie sono continuate ad esistere. Molte di queste persone continuano ad attivarsi nel sociale e nella politica</p>
@@ -310,26 +403,35 @@
               <p>3. A livello europeo esistono tante opportunità e buone pratiche, è bene tenerlo a mente</p>
               <p>Con "liberating structures" intendo un gruppo di attività che permettono un maggiore scambio di idee, senza perdere tempo ed energia</p>
               <p>Sul nostro sito europiamo.org trovate alcune sezioni che spiegano i nostri progetti principali, incluso il Manifesto delle Consulte giovanili, Erasmus Coalition e Generazione E, il progetto che ci porta in tutta Italia per condividere le opportunità europee per i giovani</p>
+            </div>
+          </details>
+          <div class="judge" role="group" aria-label="Your judgment">
+            <button type="button" class="opt" data-r="Strong">Strong</button>
+            <button type="button" class="opt" data-r="Weak">Weak</button>
+            <input type="text" class="why" maxlength="160" placeholder="why? (one line, optional)" aria-label="Why" />
           </div>
-          <p class="turn-label">The AI&#8217;s closing turn</p>
+        </li>
+        <li class="jcard" data-i="10">
+          <div class="jcard-head">
+            <span class="jnum">11</span>
+            <span class="jtopic">Story Harvest on Democratic Resilience in Europe <span class="jlang">Hungarian</span></span>
+          </div>
           <div class="ai-close">
-            <p>Grazie mille, Participant A, per aver condiviso la tua storia con noi!</p>
-              <p>Ecco un riepilogo dei tuoi punti principali:</p>
+            <p class="t-head">Köszönöm, hogy megosztottad velünk a történetedet, Participant A!</p>
+              <p>A tapasztalataid hozzájárulnak az európai demokratikus innováció közös megértéséhez, és inspirálhatnak másokat is.</p>
+              <p>Íme a legfontosabb pontjaid összefoglalva:</p>
               <ul>
-              <li><strong>Organizzazione e innovazione</strong>: Europiamo ETS è una rete di giovani e enti che crea spazi di partecipazione e rappresentanza politica attraverso progetti residenziali, festival (come "Uè Giovane" a Torino) e iniziative come YC - Youth Consult, Cooperate, Co-create</li>
-              <li><strong>Definizione di democrazia</strong>: Coinvolgere il più largo numero di persone nelle decisioni, rendendo i giovani non destinatari passivi ma protagonisti attivi nella creazione delle politiche — incarnato concretamente nel Manifesto delle Consulte Giovanili italiane</li>
-              <li><strong>Sfide affrontate</strong>: Portare intorno a un tavolo consulte giovanili diverse, con bisogni ed esperienze differenti, in assenza di una legge unica — superate grazie all'educazione non formale come strumento per creare connessioni umane autentiche</li>
-              <li><strong>Consigli per replicare</strong>: Usare metodi di educazione non formale (come le liberating structures), fare rete e adottare buone pratiche già esistenti, e sfruttare le opportunità e risorse europee disponibili</li>
-              <li><strong>Risorse</strong>: europiamo.org — con sezioni dedicate al Manifesto delle Consulte Giovanili, Erasmus Coalition e il progetto Generazione E</li>
+              <li><strong>Szervezet és innováció</strong>: A CIBC (Citizen Infrastructure Building Cooperative) olyan civic-tech infrastruktúrát épít közjavakként, amely sem piaci, sem pályázati keretekbe nem fér bele — szövetkezeti modellben, Open Collective-en keresztül átláthatóan finanszírozva, nyílt forráskóddal.</li>
+              <li><strong>Demokrácia-definíció</strong>: A demokrácia nem a négyévenkénti szavazás, hanem a kapacitás — az eszközök, protokollok és infrastruktúra ("szubsztrátum"), amelyek nélkül a kollektív döntéshozatal vagy nehézkes, vagy néhány hangosabb ember akaratába süllyed.</li>
+              <li><strong>Kihívások</strong>: A finanszírozási modell megtalálása (nem startup, nem NGO, nem kutatás) és az AI-alapú fejlesztés kétélű természete — a mennyiségi túltermelés kísértése ellen a valós használat mérésével védekeznek.</li>
+              <li><strong>Gyakorlati tanácsok</strong>: Egy konkrét hiányból indulj, vezess be átláthatóságot az első naptól (Open Collective), kerüld a kockázati tőkét, az emberekkel kezdj a pénz előtt, maradj tudatosan vékony — és fogalmazd meg írásban, mit NEM fogtok csinálni.</li>
+              <li><strong>Források</strong>: cibc.notion.site · opencollective.com/citizen-infra · github.com/Citizen-Infra · app.Facilitator.chat · [help.h…</li>
               </ul>
-              <p>La tua storia sarà sintetizzata con quelle degli altri partecipanti della rete EUDEM per rafforzare la resilienza democratica e ispirare pratiche partecipative in tutta Europa. 🌍</p>
           </div>
-        </article>
-        <article class="close">
-          <p class="eyebrow clabel">Close 11 &middot; Story Harvest on Democratic Resilience in Europe &middot; in Hungarian</p>
-          <p class="turn-label">What the participant said</p>
-          <div class="contrib">
-            <p>Citizen Infrastructure Building Cooperative — egy kis szövetkezet, amely olyan civic-tech infrastruktúrát épít és</p>
+          <details class="contrib-d">
+            <summary>What the participant said</summary>
+            <div class="contrib">
+              <p>Citizen Infrastructure Building Cooperative — egy kis szövetkezet, amely olyan civic-tech infrastruktúrát épít és</p>
               <p>finanszíroz, ami sem a piaci, sem a hagyományos pályázati keretekbe nem fér bele.</p>
               <p>A demokratikus innováció, amit szívesen megosztanék: a civil infrastruktúrát közjavakként kezeljük. Nyíltan finanszírozzuk Open</p>
               <p>Collective-en keresztül (opencollective.com/citizen-infra), átláthatóan fejlesztjük, és alapból nyílt forráskódúak az</p>
@@ -439,44 +541,48 @@
               <p>amiről beszéltem: szubsztrátum nélkül egyik darabja sem létezne. Veled, a többi résztvevővel és az EUDEM hálózattal együtt erre</p>
               <p>építkezünk tovább.</p>
               <p>Köszönöm [name] a meghívást, és köszönöm a strukturált, jól vezetett kérdéseket.</p>
+            </div>
+          </details>
+          <div class="judge" role="group" aria-label="Your judgment">
+            <button type="button" class="opt" data-r="Strong">Strong</button>
+            <button type="button" class="opt" data-r="Weak">Weak</button>
+            <input type="text" class="why" maxlength="160" placeholder="why? (one line, optional)" aria-label="Why" />
           </div>
-          <p class="turn-label">The AI&#8217;s closing turn</p>
-          <div class="ai-close">
-            <p class="t-head">Köszönöm, hogy megosztottad velünk a történetedet, Participant A!</p>
-              <p>A tapasztalataid hozzájárulnak az európai demokratikus innováció közös megértéséhez, és inspirálhatnak másokat is.</p>
-              <p>Íme a legfontosabb pontjaid összefoglalva:</p>
-              <ul>
-              <li><strong>Szervezet és innováció</strong>: A CIBC (Citizen Infrastructure Building Cooperative) olyan civic-tech infrastruktúrát épít közjavakként, amely sem piaci, sem pályázati keretekbe nem fér bele — szövetkezeti modellben, Open Collective-en keresztül átláthatóan finanszírozva, nyílt forráskóddal.</li>
-              <li><strong>Demokrácia-definíció</strong>: A demokrácia nem a négyévenkénti szavazás, hanem a kapacitás — az eszközök, protokollok és infrastruktúra ("szubsztrátum"), amelyek nélkül a kollektív döntéshozatal vagy nehézkes, vagy néhány hangosabb ember akaratába süllyed.</li>
-              <li><strong>Kihívások</strong>: A finanszírozási modell megtalálása (nem startup, nem NGO, nem kutatás) és az AI-alapú fejlesztés kétélű természete — a mennyiségi túltermelés kísértése ellen a valós használat mérésével védekeznek.</li>
-              <li><strong>Gyakorlati tanácsok</strong>: Egy konkrét hiányból indulj, vezess be átláthatóságot az első naptól (Open Collective), kerüld a kockázati tőkét, az emberekkel kezdj a pénz előtt, maradj tudatosan vékony — és fogalmazd meg írásban, mit NEM fogtok csinálni.</li>
-              <li><strong>Források</strong>: cibc.notion.site · opencollective.com/citizen-infra · github.com/Citizen-Infra · app.Facilitator.chat · [help.h…</li>
-              </ul>
-          </div>
-        </article>
-      </section>
+        </li>
+      </ol>
     </main>
   </div>
-  <section class="band">
-    <div class="wrap"><div class="inner">
-      <p class="eyebrow">Submit</p>
-      <h2>Send your judgments.</h2>
-      <p class="prose">The link opens a pre-filled issue on GitHub, one line per close. Mark each Strong or Weak, add a line of why, and note if you would move the line. Submitting it keeps your labels in the open, where the commons can see and use them.</p>
-      <p class="pill"><span class="dot" aria-hidden="true"></span> <a href="https://github.com/Open-Facilitation-Library/evals/issues/new?title=Closing-axis%20calibration%20labels&labels=calibration&body=Closing-axis%20calibration.%20For%20each%20close%2C%20mark%20it%20Strong%20or%20Weak%20and%20add%20one%20line%20of%20why.%0A%0A1.%20CIBC%20Demo%20Day%20Participation%20%E2%80%94%20%0A2.%20Does%20the%20Scenius%20need%20a%20treasury%3F%20%E2%80%94%20%0A3.%20AI%20Fishbowl%20Feedback%20%E2%80%94%20%0A4.%20What%20should%20the%20public%20sensemaking%20sessions%20be%20about%3F%20%E2%80%94%20%0A5.%20What%20should%20the%20public%20sensemaking%20sessions%20be%20about%3F%20%E2%80%94%20%0A6.%20What%20should%20the%20public%20sensemaking%20sessions%20be%20about%3F%20%E2%80%94%20%0A7.%20Story%20Harvest%20on%20Democratic%20Resilience%20in%20Europe%20%E2%80%94%20%0A8.%20Team%20Topologies%20Assessment%20%E2%80%94%20%0A9.%20Does%20the%20Scenius%20need%20a%20treasury%3F%20%E2%80%94%20%0A10.%20Story%20Harvest%20on%20Democratic%20Resilience%20in%20Europe%20%E2%80%94%20%0A11.%20Story%20Harvest%20on%20Democratic%20Resilience%20in%20Europe%20%E2%80%94%20%0A%0AWould%20you%20draw%20the%20line%20differently%20than%20the%20stated%20criterion%3F%20If%20so%2C%20how%3F%0A">Submit on GitHub</a></p>
-    </div></div>
-  </section>
-  <div class="wrap">
-    <footer>
-      <div class="foot">
-        <nav aria-label="Footer">
-          <a href="/facilitators/">Facilitators</a>
-          <a href="https://wiki.openfac.org">Wiki</a>
-          <a href="https://github.com/Open-Facilitation-Library">GitHub</a>
-          <a href="https://openfac.substack.com">Substack</a>
-        </nav>
-        <span class="lic">Open source &middot; openfac.org</span>
-      </div>
-    </footer>
+  <div class="submitbar">
+    <div class="submitbar-inner wrap">
+      <span class="progress"><strong id="jcount">0</strong> of 11 judged</span>
+      <button type="button" id="submit" class="btn">Submit on GitHub</button>
+    </div>
   </div>
+  <script>
+    var TOPICS = ["CIBC Demo Day Participation","Does the Scenius need a treasury?","AI Fishbowl Feedback","What should the public sensemaking sessions be about?","What should the public sensemaking sessions be about?","What should the public sensemaking sessions be about?","Story Harvest on Democratic Resilience in Europe","Team Topologies Assessment","Does the Scenius need a treasury?","Story Harvest on Democratic Resilience in Europe","Story Harvest on Democratic Resilience in Europe"];
+    var picks = {};
+    function refresh(){ var n = Object.keys(picks).filter(function(k){ return picks[k] && picks[k].r; }).length; document.getElementById("jcount").textContent = n; }
+    document.querySelectorAll(".jcard").forEach(function(card){
+      var i = card.getAttribute("data-i");
+      picks[i] = {};
+      card.querySelectorAll(".opt").forEach(function(btn){
+        btn.addEventListener("click", function(){
+          card.querySelectorAll(".opt").forEach(function(b){ b.classList.remove("on"); });
+          btn.classList.add("on");
+          picks[i].r = btn.getAttribute("data-r");
+          card.classList.add("done");
+          refresh();
+        });
+      });
+      var why = card.querySelector(".why");
+      why.addEventListener("input", function(){ picks[i].why = why.value.trim(); });
+    });
+    document.getElementById("submit").addEventListener("click", function(){
+      var lines = TOPICS.map(function(t, i){ var p = picks[i] || {}; return (i + 1) + ". " + t + " - " + (p.r || "(skipped)") + (p.why ? ": " + p.why : ""); });
+      var body = "Closing-axis calibration. One line per close.\n\n" + lines.join("\n") + "\n\nWould you draw the line differently than the stated criterion? If so, how?\n";
+      var url = "https://github.com/Open-Facilitation-Library/evals/issues/new?title=" + encodeURIComponent("Closing-axis calibration labels") + "&labels=" + encodeURIComponent("calibration") + "&body=" + encodeURIComponent(body);
+      window.open(url, "_blank", "noopener");
+    });
+  </script>
 </body>
 </html>

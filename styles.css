@@ -193,15 +193,43 @@ footer { border-top: 1px solid var(--hairline); padding-block: 2.6rem 3.4rem; }
   .rise { opacity: 1; transform: none; animation: none; }
 }
 
-/* Calibrate page --------------------------------------------------- */
-.close { padding-block: clamp(1.8rem, 1rem + 2vw, 2.6rem); border-top: 1px solid var(--hairline); }
-.close .clabel { display: block; margin-bottom: 1.1rem; color: var(--slate); }
-.turn-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 1.4rem 0 0.55rem; }
-.contrib { max-width: 64ch; color: var(--muted); }
-.contrib p { margin: 0.45rem 0; }
-.ai-close { max-width: 64ch; background: var(--surface); border: 1px solid var(--hairline); border-radius: 10px; padding: clamp(1rem, 2vw, 1.7rem); }
-.ai-close p { margin: 0.55rem 0; }
-.ai-close p:first-child, .contrib p:first-child { margin-top: 0; }
+/* Calibrate tool --------------------------------------------------- */
+.calib-intro { padding-block: clamp(2rem, 1rem + 3vw, 3.5rem) clamp(1.4rem, 1rem + 1.5vw, 2.4rem); }
+.calib-intro h1 { font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); max-width: 14ch; margin-top: 0.7rem; }
+.calib-intro .lead { max-width: 58ch; color: var(--muted); font-size: var(--step-lead); margin-top: 1.1rem; }
+.rubric { margin-top: 1.5rem; max-width: 64ch; border: 1px solid var(--hairline); border-radius: 8px; background: var(--surface); }
+.rubric summary { cursor: pointer; padding: 0.8rem 1rem; font-family: var(--grotesk); font-weight: 600; font-size: 0.95rem; color: var(--ink); }
+.rubric p { margin: 0; padding: 0 1rem 1rem; color: var(--muted); }
+
+.closes { list-style: none; margin: 0; padding: 0 0 7rem; display: grid; gap: clamp(1rem, 0.6rem + 1vw, 1.5rem); }
+.jcard { border: 1px solid var(--hairline); border-radius: 12px; background: var(--bg); padding: clamp(1.1rem, 0.7rem + 1vw, 1.7rem); transition: border-color 180ms; }
+.jcard.done { border-color: var(--sage); }
+.jcard-head { display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: 0.9rem; }
+.jnum { font-family: var(--mono); font-size: 0.82rem; color: var(--sage-ink); }
+.jtopic { font-family: var(--grotesk); font-weight: 600; font-size: 1.05rem; }
+.jlang { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.ai-close { max-width: none; }
+.ai-close p { margin: 0.5rem 0; }
+.ai-close p:first-child { margin-top: 0; }
 .t-head { font-family: var(--grotesk); font-weight: 600; margin-top: 1rem !important; }
 .ai-close ul, .contrib ul { margin: 0.5rem 0; padding-left: 1.2rem; }
 .ai-close li, .contrib li { margin: 0.3rem 0; }
+.contrib-d { margin-top: 0.9rem; border-top: 1px solid var(--hairline-soft); padding-top: 0.8rem; }
+.contrib-d summary { cursor: pointer; font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); }
+.contrib { margin-top: 0.7rem; color: var(--muted); }
+.contrib p { margin: 0.4rem 0; }
+
+.judge { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem; margin-top: 1.2rem; }
+.opt { font-family: var(--grotesk); font-weight: 600; font-size: 0.9rem; padding: 0.5rem 1.15rem; border: 1px solid var(--hairline); border-radius: 7px; background: var(--bg); color: var(--ink); cursor: pointer; transition: background 150ms, border-color 150ms, color 150ms; }
+.opt:hover { border-color: var(--muted); }
+.opt:focus-visible { outline: 2px solid var(--slate); outline-offset: 2px; }
+.opt.on[data-r="Strong"] { background: var(--sage); border-color: var(--sage); color: oklch(0.25 0.03 165); }
+.opt.on[data-r="Weak"] { background: var(--slate); border-color: var(--slate); color: var(--bg); }
+.why { flex: 1; min-width: 12rem; font-family: var(--serif); font-size: 0.92rem; padding: 0.5rem 0.75rem; border: 1px solid var(--hairline); border-radius: 7px; background: var(--bg); color: var(--ink); }
+.why:focus { outline: none; border-color: var(--slate); }
+.why::placeholder { color: var(--muted); }
+
+.submitbar { position: sticky; bottom: 0; background: var(--bg); border-top: 1px solid var(--hairline); }
+.submitbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 0.85rem; }
+.progress { font-size: 0.92rem; color: var(--muted); }
+.progress strong { color: var(--ink); font-family: var(--grotesk); }
