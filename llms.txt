@@ -1,0 +1,25 @@
+# Open Facilitation Library
+
+> Open-source building blocks for agentic facilitation: forkable method specs, evals, and the research behind them. Run them on any runtime.
+
+The Open Facilitation Library (OFL) is an open commons for building AI that facilitates real group conversations: deliberation, research interviews, dispute resolution, innovation workshops. Its core artifact is the method spec, a portable, forkable definition of a facilitation method that any capable runtime can execute. Every spec has two halves: a protocol (the method itself, with its stages, roles, and facilitator prompts) and evals (open rubrics, calibrated by expert facilitators, that measure whether it ran well). Harmonica is the reference implementation, but nothing is locked to it. OFL is building toward a model where the evals and knowledge facilitators produce stay a commons that facilitators own and govern.
+
+## Site
+
+- [Home](https://openfac.org): what OFL is, the method spec, and how to get involved.
+- [Facilitators](https://openfac.org/facilitators/): how expert facilitators annotate for evals and curate the library, and the vision of OFL as a data co-op owned by facilitators.
+- [Runtimes](https://openfac.org/runtimes/): what makes a runtime capable of running a method spec, and why Harmonica is the reference runtime.
+- [Wiki](https://wiki.openfac.org): the full knowledge base, research, method specs, and evaluation frameworks.
+
+## Repositories
+
+- [evals](https://github.com/Open-Facilitation-Library/evals): the Why-How-Who evaluation framework and the eval commons; human-calibrated judging of facilitator performance.
+- [synthesis](https://github.com/Open-Facilitation-Library/synthesis): knowledge base, research watchlist, and automated paper discovery.
+- [cross-pollination](https://github.com/Open-Facilitation-Library/cross-pollination): opinion-exposure algorithms and experiments for surfacing disagreement.
+- [workflows](https://github.com/Open-Facilitation-Library/workflows): teardowns of how real platforms orchestrate AI facilitation agents.
+- [skills](https://github.com/Open-Facilitation-Library/skills): executable agent skills following the Agent Skills specification.
+
+## Optional
+
+- [Substack](https://openfac.substack.com): research notes and project updates.
+- [Giveth](https://giveth.io/project/open-facilitation-library): fund the commons.
