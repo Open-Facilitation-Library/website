@@ -13,11 +13,11 @@ The Open Facilitation Library (OFL) is an open library for building AI that faci
 
 ## Repositories
 
+- [method-specs](https://github.com/Open-Facilitation-Library/method-specs): the core artifact, forkable facilitation method specs with two halves (protocol + eval), plus validation and index tooling.
 - [evals](https://github.com/Open-Facilitation-Library/evals): the Why-How-Who evaluation framework and the evaluations; human-calibrated judging of facilitator performance.
 - [synthesis](https://github.com/Open-Facilitation-Library/synthesis): knowledge base, research watchlist, and automated paper discovery.
 - [cross-pollination](https://github.com/Open-Facilitation-Library/cross-pollination): opinion-exposure algorithms and experiments for surfacing disagreement.
 - [workflows](https://github.com/Open-Facilitation-Library/workflows): teardowns of how real platforms orchestrate AI facilitation agents.
-- [skills](https://github.com/Open-Facilitation-Library/skills): executable agent skills following the Agent Skills specification.
 
 ## Optional
 
