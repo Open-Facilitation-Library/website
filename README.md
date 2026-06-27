@@ -7,7 +7,7 @@ A zero-build static site: HTML and one stylesheet, no framework.
 - `index.html` — home
 - `facilitators/` — for facilitators (annotation, curation, the data-co-op vision)
 - `runtimes/` — what makes a runtime capable
-- `calibrate/` — criteria-review tool (currently `noindex` and unlinked); see below
+- `calibrate/` — criteria-review tool, generated; see below
 - `styles.css` — the shared stylesheet
 - `llms.txt` — machine-readable site summary ([llmstxt.org](https://llmstxt.org))
 
@@ -21,7 +21,7 @@ npm run build-calibrate      # reads ../OFL/method-specs by default
 # or: node scripts/build-calibrate.mjs <path-to-method-specs>
 ```
 
-The page stays `noindex` and unlinked until launch (HAR-1236).
+Linked from `/facilitators` ("Calibrate"). Built for HAR-1236.
 
 Design context for keeping it on-brand lives in `PRODUCT.md` and `DESIGN.md`. The visual language coheres with the [wiki](https://wiki.openfac.org): Schibsted Grotesk, Source Sans, warm neutrals, a single sage accent.
 
