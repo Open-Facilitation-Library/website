@@ -1,0 +1,12 @@
+{
+  "name": "ofl-website-tools",
+  "private": true,
+  "type": "module",
+  "description": "Dev-only tooling for openfac.org. The site itself is zero-build static HTML; this only generates calibrate/index.html from the method-specs eval YAMLs.",
+  "scripts": {
+    "build-calibrate": "node scripts/build-calibrate.mjs"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}
