@@ -43,7 +43,7 @@ Matches the wiki so the family holds.
 - **Layer row:** layer name, one-line description, and a link out, as a clean list with a leading sage marker. No side-stripe borders.
 - **Platform list:** the 14 platform names set inline as flowing text, with Harmonica emphasized (weight, not a badge).
 - **Links:** text links with a sage underline or marker. Two primary actions at most (Read the wiki, GitHub org); the rest are quiet inline links.
-- **Footer:** mirrors the top nav (Facilitators / Runtimes / Wiki / GitHub).
+- **Footer:** the top-nav links (Facilitators / Runtimes / Wiki / GitHub) on the left, a "Supported by" funder credit (Mozilla Foundation logo, full color) on the right.
 
 ## Motion
 

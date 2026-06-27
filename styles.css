@@ -174,15 +174,20 @@ section { padding-block: 0; }
 @media (max-width: 34rem) { .route { grid-template-columns: 1fr; gap: 0.3rem; } }
 
 /* Footer ----------------------------------------------------------- */
-footer { border-top: 1px solid var(--hairline); padding-block: 2.6rem 3.4rem; }
+footer { border-top: 1px solid var(--hairline); padding-block: 2.4rem 3.4rem; }
 .foot {
-  display: flex; justify-content: space-between; gap: 1.5rem 2rem; flex-wrap: wrap;
-  align-items: baseline; font-size: 0.9rem; color: var(--muted);
+  display: flex; justify-content: space-between; gap: 1.6rem 2.5rem; flex-wrap: wrap;
+  align-items: center; font-size: 0.9rem; color: var(--muted);
 }
-.foot nav { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+.foot nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 .foot nav a { color: var(--muted); }
 .foot nav a:hover { color: var(--ink); }
-.foot .lic { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.02em; }
+.foot-support { display: inline-flex; align-items: center; gap: 0.75rem; margin: 0; }
+.foot-support-label { font-size: 0.82rem; color: var(--muted); white-space: nowrap; }
+.foot-support a { display: inline-flex; border-radius: 4px; }
+.foot-support a:focus-visible { outline: 2px solid var(--slate); outline-offset: 4px; }
+.foot-moz { height: 2.5rem; width: auto; display: block; }
+@media (max-width: 34rem) { .foot { align-items: flex-start; } }
 
 /* Entrance motion -------------------------------------------------- */
 .rise { opacity: 0; transform: translateY(14px); animation: rise 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
