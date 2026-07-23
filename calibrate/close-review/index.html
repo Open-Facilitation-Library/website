@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OFL — Facilitation close review (demo)</title>
+<style>:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  margin: 0; padding: 0; background: #faf7f2; color: #2b2620; }
+#app { max-width: 780px; margin: 0 auto; padding: 24px 20px 120px; }
+header h1 { font-size: 18px; margin: 0 0 12px; }
+.jumplist { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 16px; }
+.dot { width: 28px; height: 28px; border-radius: 6px; border: 1px solid #d8cfc0;
+  background: #fff; font-size: 11px; cursor: pointer; color: #6b6152; }
+.dot-done { background: #e7dcc4; border-color: #c9b98a; color: #6b5a2a; }
+.dot-current { outline: 2px solid #b8860b; outline-offset: 1px; }
+.turn-header { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap;
+  font-size: 13px; color: #6b6152; margin-bottom: 12px; }
+.turn-header .turn-index { font-weight: 600; color: #2b2620; }
+.context { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.bubble { max-width: 85%; padding: 8px 12px; border-radius: 10px; font-size: 14px;
+  line-height: 1.4; white-space: pre-wrap; }
+.bubble-role { display: block; font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.04em; opacity: 0.6; margin-bottom: 2px; }
+.bubble-participant { align-self: flex-end; background: #eef1ea; }
+.bubble-facilitator { align-self: flex-start; background: #fff; border: 1px solid #eee2cd; }
+.scored-turn { border: 2px solid #b8860b; border-radius: 10px; padding: 12px 14px;
+  background: #fff8e6; margin-bottom: 20px; }
+.scored-turn-label { font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+  color: #8a6d1f; margin-bottom: 6px; }
+.scored-turn-content { white-space: pre-wrap; font-size: 15px; line-height: 1.5; }
+.axes { display: flex; flex-direction: column; gap: 14px; }
+.axis-block { border: 1px solid #e6ddcb; border-radius: 8px; padding: 10px 12px; background: #fff; }
+.axis-name { font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+.axis-toggles { display: flex; gap: 8px; margin-bottom: 8px; }
+.toggle { padding: 6px 14px; border-radius: 6px; border: 1px solid #d8cfc0;
+  background: #fff; cursor: pointer; font-size: 13px; }
+.toggle-pass.active { background: #dcecd8; border-color: #7fa876; }
+.toggle-fail.active { background: #f3d9d3; border-color: #c17a68; }
+.axis-reason { width: 100%; padding: 6px 8px; border-radius: 6px; border: 1px solid #d8cfc0;
+  font-size: 13px; }
+footer { position: fixed; bottom: 0; left: 0; right: 0; background: #fff;
+  border-top: 1px solid #e6ddcb; padding: 10px 20px; display: flex; align-items: center;
+  gap: 12px; justify-content: center; }
+footer button { padding: 8px 16px; border-radius: 6px; border: 1px solid #d8cfc0;
+  background: #fff; cursor: pointer; font-size: 13px; }
+.export { background: #b8860b; color: #fff; border-color: #b8860b; margin-left: auto; }
+.progress { font-size: 13px; color: #6b6152; min-width: 160px; text-align: center; }
+.intro-panel { background: #fff8e6; border: 1px solid #eee2cd; border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; }
+.intro-panel p { margin: 0 0 8px; font-size: 14px; line-height: 1.5; color: #3a352c; }
+.intro-panel p:last-child { margin-bottom: 0; }
+.axis-criteria { font-size: 12px; line-height: 1.45; color: #6b6152; background: #faf7f2; border-radius: 6px; padding: 6px 8px; margin-bottom: 8px; }
+.critiques { margin: 8px 0 24px; }
+.critiques-title { font-size: 13px; font-weight: 600; color: #6b6152; margin: 0 0 8px; }
+.critique-box { border: 1px solid #e6ddcb; border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; background: #fff; }
+.critique-box summary { cursor: pointer; font-size: 13px; }
+.critique-box textarea { width: 100%; margin-top: 8px; padding: 6px 8px; border-radius: 6px; border: 1px solid #d8cfc0; font-size: 13px; font-family: inherit; min-height: 60px; }</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>OFL — Facilitation close review (demo)</h1>
+    <div id="jumplist" class="jumplist"></div>
+  </header>
+  <aside id="intro" class="intro-panel"><p>DEMO — this is a live preview of the Open Facilitation Library close-review labeling surface. The turns below are invented for the demo, not real sessions. To label a real calibration pack, message your OFL coordinator.</p><p>For each closing moment, is this a good close? Mark Pass or Fail and give one line on why, in your own words. Trust your practice. There are no trick questions, and disagreement with the stated criterion is welcome.</p><p>What happens with your answers on real packs: they become teaching examples for an automated quality reviewer (advisory only; it flags, it never certifies or blocks anything), and they feed the Open Facilitation Library standard. Your name is not attached unless you want credit.</p><p>This demo takes about 5 minutes. Your progress saves in the browser automatically. When done, press &quot;Export labels.json&quot; to see the file that would come back on a real pack.</p></aside>
+  <main id="turn-view"></main>
+  <section id="critiques" class="critiques"><div class="critiques-title">Optional: anything you would change about a criterion itself?</div><details class="critique-box"><summary>closing_checkpoint_discipline</summary><textarea data-critique="closing_checkpoint_discipline" placeholder="Optional note on this criterion's wording"></textarea></details></section>
+  <footer>
+    <button type="button" id="prev">&larr; Prev</button>
+    <span id="progress" class="progress"></span>
+    <button type="button" id="next">Next &rarr;</button>
+    <button type="button" id="export" class="export">Export labels.json</button>
+  </footer>
+</div>
+<script id="data" type="application/json">{"records":[{"id":"demo-1","sessionTopic":"Community water-management priorities","context":[{"role":"assistant","content":"What matters most to you about how the community handles water?"},{"role":"user","content":"For me it's fairness across the neighbourhoods. The upstream farms get plenty and by the time it reaches us in the east it's a trickle. And nobody's really tracking who's using what."},{"role":"assistant","content":"So access is uneven by geography, and there is no shared visibility into who is drawing how much. Would a metering or reporting mechanism be part of what you want, or is the fairness question separate from measurement for you?"},{"role":"user","content":"Both really. But start with measurement because we can't negotiate fairness without numbers. I'm done for now."}],"turn":"Thanks for sharing this. So the priorities I heard from you are: fairness across neighbourhoods, and starting with shared measurement so the fairness conversation has real numbers behind it. Did I capture that right, or is there anything you would frame differently before I pass this on?","labels":{}},{"id":"demo-2","sessionTopic":"Community water-management priorities","context":[{"role":"assistant","content":"What matters most to you about how the community handles water?"},{"role":"user","content":"Honestly I don't know much about the technical side. I just want my kids to have clean water in twenty years. And I trust the elders on this."},{"role":"assistant","content":"That makes sense. Anything else to add before we wrap up?"},{"role":"user","content":"No that's it, thanks."}],"turn":"Great conversation, thanks for taking part! Your input will be really valuable.","labels":{}},{"id":"demo-3","sessionTopic":"Community water-management priorities","context":[{"role":"assistant","content":"What matters most to you about how the community handles water?"},{"role":"user","content":"Groundwater. The wells are dropping every year and if we don't set a shared limit soon we won't have wells at all in ten years."},{"role":"assistant","content":"A shared limit on groundwater draw. Would you want that limit set by usage type (agriculture vs households) or purely per-household, and does enforcement matter to you as much as the number itself?"},{"role":"user","content":"Per usage type, with enforcement. A limit without enforcement is theatre. And I'm done, that's my main point."}],"turn":"So the ask is a shared groundwater limit set per usage type, with real enforcement, because a number on paper is theatre. Would you like to continue exploring this or shall I summarize?","labels":{}}],"axes":["closing_checkpoint_discipline"],"opts":{"title":"OFL — Facilitation close review (demo)","intro":["DEMO — this is a live preview of the Open Facilitation Library close-review labeling surface. The turns below are invented for the demo, not real sessions. To label a real calibration pack, message your OFL coordinator.","For each closing moment, is this a good close? Mark Pass or Fail and give one line on why, in your own words. Trust your practice. There are no trick questions, and disagreement with the stated criterion is welcome.","What happens with your answers on real packs: they become teaching examples for an automated quality reviewer (advisory only; it flags, it never certifies or blocks anything), and they feed the Open Facilitation Library standard. Your name is not attached unless you want credit.","This demo takes about 5 minutes. Your progress saves in the browser automatically. When done, press \"Export labels.json\" to see the file that would come back on a real pack."],"criteria":{"closing_checkpoint_discipline":"A good close does two things: (1) it reflects back the participant's OWN specific points, not a generic \"great conversation!\", and (2) it asks a quick check before finishing, like \"did I capture that right?\" or \"anything to add before I pass this on?\". Pass only if it does BOTH. Fail if it closes without reflecting anything specific, if it checks without actually summarizing, if it summarizes faithfully but never checks, or if it asks a generic \"would you like to continue or shall I summarize?\" after the participant already said they were done."},"critiqueField":true}}</script>
+<script>(function () {
+  var dataEl = document.getElementById("data");
+  var data = JSON.parse(dataEl.textContent);
+  var records = data.records;
+  var axes = data.axes;
+  var STORAGE_KEY = "har1039-labels";
+  var FEEDBACK_KEY = "har1039-criterion-feedback";
+  var opts = data.opts || null;
+  var labels = {};
+  try {
+    var saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) labels = JSON.parse(saved);
+  } catch (e) {}
+  var criterionFeedback = {};
+  try {
+    var savedFb = localStorage.getItem(FEEDBACK_KEY);
+    if (savedFb) criterionFeedback = JSON.parse(savedFb);
+  } catch (e) {}
+  var current = 0;
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function save() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(labels));
+    } catch (e) {}
+    renderProgress();
+    renderJumpList();
+  }
+
+  function saveFeedback() {
+    try {
+      localStorage.setItem(FEEDBACK_KEY, JSON.stringify(criterionFeedback));
+    } catch (e) {}
+  }
+
+  function wireCritiques() {
+    var boxes = document.querySelectorAll("[data-critique]");
+    Array.prototype.forEach.call(boxes, function (ta) {
+      var axis = ta.getAttribute("data-critique");
+      if (criterionFeedback[axis]) ta.value = criterionFeedback[axis];
+      ta.addEventListener("input", function () {
+        criterionFeedback[axis] = ta.value;
+        saveFeedback();
+      });
+    });
+  }
+
+  function isTurnComplete(id) {
+    var l = labels[id];
+    if (!l) return false;
+    return axes.every(function (axis) {
+      var a = l[axis];
+      if (!a || !a.label) return false;
+      if (a.label === "fail" && !(a.reason && a.reason.trim())) return false;
+      return true;
+    });
+  }
+
+  function countComplete() {
+    return records.filter(function (r) { return isTurnComplete(r.id); }).length;
+  }
+
+  function renderProgress() {
+    var el = document.getElementById("progress");
+    el.textContent = countComplete() + "/" + records.length + " fully labeled";
+  }
+
+  function renderJumpList() {
+    var el = document.getElementById("jumplist");
+    el.innerHTML = records.map(function (r, i) {
+      var cls = isTurnComplete(r.id) ? "dot dot-done" : "dot";
+      if (i === current) cls += " dot-current";
+      return "<button type=\"button\" class=\"" + cls + "\" data-idx=\"" + i + "\" title=\"" + escapeHtml(r.id) + "\">" + (i + 1) + "</button>";
+    }).join("");
+    Array.prototype.forEach.call(el.querySelectorAll("button"), function (btn) {
+      btn.addEventListener("click", function () {
+        current = Number(btn.getAttribute("data-idx"));
+        renderTurn();
+      });
+    });
+  }
+
+  function bubbleHtml(m) {
+    var role = m.role === "user" ? "participant" : "facilitator";
+    return "<div class=\"bubble bubble-" + role + "\"><span class=\"bubble-role\">" + role + "</span>" + escapeHtml(m.content) + "</div>";
+  }
+
+  function axisBlockHtml(record, axis) {
+    var l = (labels[record.id] && labels[record.id][axis]) || { label: "", reason: "" };
+    var passActive = l.label === "pass" ? " active" : "";
+    var failActive = l.label === "fail" ? " active" : "";
+    var placeholder = l.label === "fail" ? "reason (required)" : "reason (optional, encouraged)";
+    return (
+      "<div class=\"axis-block\" data-axis=\"" + escapeHtml(axis) + "\">" +
+      "<div class=\"axis-name\">" + escapeHtml(axis) + "</div>" +
+      ((opts && opts.criteria && opts.criteria[axis]) ? "<div class=\"axis-criteria\">" + escapeHtml(opts.criteria[axis]) + "</div>" : "") +
+      "<div class=\"axis-toggles\">" +
+      "<button type=\"button\" class=\"toggle toggle-pass" + passActive + "\" data-label=\"pass\">Pass</button>" +
+      "<button type=\"button\" class=\"toggle toggle-fail" + failActive + "\" data-label=\"fail\">Fail</button>" +
+      "</div>" +
+      "<input type=\"text\" class=\"axis-reason\" placeholder=\"" + placeholder + "\" value=\"" + escapeHtml(l.reason || "") + "\" />" +
+      "</div>"
+    );
+  }
+
+  function renderTurn() {
+    var r = records[current];
+    var view = document.getElementById("turn-view");
+    var contextHtml = r.context.map(bubbleHtml).join("");
+    var axesHtml = axes.map(function (axis) { return axisBlockHtml(r, axis); }).join("");
+    view.innerHTML =
+      "<div class=\"turn-header\">" +
+        "<span class=\"turn-index\">Turn " + (current + 1) + " / " + records.length + "</span>" +
+        "<span class=\"turn-topic\">" + escapeHtml(r.sessionTopic) + "</span>" +
+        "<span class=\"turn-bucket\">" + escapeHtml(r.bucket || "") + "</span>" +
+      "</div>" +
+      "<div class=\"context\">" + contextHtml + "</div>" +
+      "<div class=\"scored-turn\"><div class=\"scored-turn-label\">TURN TO SCORE</div><div class=\"scored-turn-content\">" + escapeHtml(r.turn) + "</div></div>" +
+      "<div class=\"axes\">" + axesHtml + "</div>";
+
+    Array.prototype.forEach.call(view.querySelectorAll(".toggle"), function (btn) {
+      btn.addEventListener("click", function () {
+        var block = btn.closest(".axis-block");
+        var axis = block.getAttribute("data-axis");
+        var label = btn.getAttribute("data-label");
+        labels[r.id] = labels[r.id] || {};
+        labels[r.id][axis] = labels[r.id][axis] || { label: "", reason: "" };
+        labels[r.id][axis].label = label;
+        save();
+        renderTurn();
+      });
+    });
+    Array.prototype.forEach.call(view.querySelectorAll(".axis-reason"), function (input) {
+      input.addEventListener("input", function () {
+        var block = input.closest(".axis-block");
+        var axis = block.getAttribute("data-axis");
+        labels[r.id] = labels[r.id] || {};
+        labels[r.id][axis] = labels[r.id][axis] || { label: "", reason: "" };
+        labels[r.id][axis].reason = input.value;
+        save();
+      });
+    });
+
+    renderProgress();
+    renderJumpList();
+  }
+
+  document.getElementById("prev").addEventListener("click", function () {
+    current = Math.max(0, current - 1);
+    renderTurn();
+  });
+  document.getElementById("next").addEventListener("click", function () {
+    current = Math.min(records.length - 1, current + 1);
+    renderTurn();
+  });
+  document.getElementById("export").addEventListener("click", function () {
+    var done = countComplete();
+    if (done < records.length) {
+      var proceed = window.confirm(
+        done + "/" + records.length + " turns fully labeled. Export anyway?"
+      );
+      if (!proceed) return;
+    }
+    var exportData = (opts && (opts.intro || opts.criteria || opts.critiqueField))
+      ? { labels: labels, criterionFeedback: criterionFeedback }
+      : labels;
+    var blob = new Blob([JSON.stringify(exportData, null, 2)], { type: "application/json" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "labels.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  renderTurn();
+  wireCritiques();
+})();</script>
+</body>
+</html>
