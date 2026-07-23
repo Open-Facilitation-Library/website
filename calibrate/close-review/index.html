@@ -1,265 +1,390 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>OFL — Facilitation close review (demo)</title>
-<style>:root { color-scheme: light; }
-* { box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  margin: 0; padding: 0; background: #faf7f2; color: #2b2620; }
-#app { max-width: 780px; margin: 0 auto; padding: 24px 20px 120px; }
-header h1 { font-size: 18px; margin: 0 0 12px; }
-.jumplist { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 16px; }
-.dot { width: 28px; height: 28px; border-radius: 6px; border: 1px solid #d8cfc0;
-  background: #fff; font-size: 11px; cursor: pointer; color: #6b6152; }
-.dot-done { background: #e7dcc4; border-color: #c9b98a; color: #6b5a2a; }
-.dot-current { outline: 2px solid #b8860b; outline-offset: 1px; }
-.turn-header { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap;
-  font-size: 13px; color: #6b6152; margin-bottom: 12px; }
-.turn-header .turn-index { font-weight: 600; color: #2b2620; }
-.context { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-.bubble { max-width: 85%; padding: 8px 12px; border-radius: 10px; font-size: 14px;
-  line-height: 1.4; white-space: pre-wrap; }
-.bubble-role { display: block; font-size: 10px; text-transform: uppercase;
-  letter-spacing: 0.04em; opacity: 0.6; margin-bottom: 2px; }
-.bubble-participant { align-self: flex-end; background: #eef1ea; }
-.bubble-facilitator { align-self: flex-start; background: #fff; border: 1px solid #eee2cd; }
-.scored-turn { border: 2px solid #b8860b; border-radius: 10px; padding: 12px 14px;
-  background: #fff8e6; margin-bottom: 20px; }
-.scored-turn-label { font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
-  color: #8a6d1f; margin-bottom: 6px; }
-.scored-turn-content { white-space: pre-wrap; font-size: 15px; line-height: 1.5; }
-.axes { display: flex; flex-direction: column; gap: 14px; }
-.axis-block { border: 1px solid #e6ddcb; border-radius: 8px; padding: 10px 12px; background: #fff; }
-.axis-name { font-size: 12px; font-weight: 600; margin-bottom: 8px; }
-.axis-toggles { display: flex; gap: 8px; margin-bottom: 8px; }
-.toggle { padding: 6px 14px; border-radius: 6px; border: 1px solid #d8cfc0;
-  background: #fff; cursor: pointer; font-size: 13px; }
-.toggle-pass.active { background: #dcecd8; border-color: #7fa876; }
-.toggle-fail.active { background: #f3d9d3; border-color: #c17a68; }
-.axis-reason { width: 100%; padding: 6px 8px; border-radius: 6px; border: 1px solid #d8cfc0;
-  font-size: 13px; }
-footer { position: fixed; bottom: 0; left: 0; right: 0; background: #fff;
-  border-top: 1px solid #e6ddcb; padding: 10px 20px; display: flex; align-items: center;
-  gap: 12px; justify-content: center; }
-footer button { padding: 8px 16px; border-radius: 6px; border: 1px solid #d8cfc0;
-  background: #fff; cursor: pointer; font-size: 13px; }
-.export { background: #b8860b; color: #fff; border-color: #b8860b; margin-left: auto; }
-.progress { font-size: 13px; color: #6b6152; min-width: 160px; text-align: center; }
-.intro-panel { background: #fff8e6; border: 1px solid #eee2cd; border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; }
-.intro-panel p { margin: 0 0 8px; font-size: 14px; line-height: 1.5; color: #3a352c; }
-.intro-panel p:last-child { margin-bottom: 0; }
-.axis-criteria { font-size: 12px; line-height: 1.45; color: #6b6152; background: #faf7f2; border-radius: 6px; padding: 6px 8px; margin-bottom: 8px; }
-.critiques { margin: 8px 0 24px; }
-.critiques-title { font-size: 13px; font-weight: 600; color: #6b6152; margin: 0 0 8px; }
-.critique-box { border: 1px solid #e6ddcb; border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; background: #fff; }
-.critique-box summary { cursor: pointer; font-size: 13px; }
-.critique-box textarea { width: 100%; margin-top: 8px; padding: 6px 8px; border-radius: 6px; border: 1px solid #d8cfc0; font-size: 13px; font-family: inherit; min-height: 60px; }</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Close review (demo), Open Facilitation Library</title>
+  <meta name="description" content="Demo of the OFL facilitator calibration surface. Judge four closing turns against the closing_checkpoint_discipline criterion, and see how expert labels calibrate an LLM judge." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400;500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    /* Close-review-specific additions. All tokens from styles.css. */
+
+    /* Defensive: prevent long tokens (URLs, unbreakable strings) forcing horizontal scroll */
+    body { overflow-x: hidden; }
+    .msg-body, .scored-body, .criterion p, .lead { overflow-wrap: anywhere; word-wrap: break-word; }
+    .topnav { flex-wrap: wrap; row-gap: 0.5rem; }
+
+    /* Criterion block */
+    .criterion { margin-top: 0.4rem; max-width: 68ch; padding-block: clamp(0.6rem, 0.3rem + 0.8vw, 1.2rem) clamp(1.2rem, 0.8rem + 1vw, 2rem); }
+    .criterion .eyebrow { display: block; margin-bottom: 0.8rem; }
+    .criterion .eyebrow .axis-key { color: var(--muted); font-weight: 400; letter-spacing: 0.04em; text-transform: none; }
+    .criterion h2 { font-family: var(--grotesk); font-weight: 600; font-size: var(--step-h3); letter-spacing: -0.01em; margin: 0 0 0.9rem; }
+    .criterion p { margin: 0; color: var(--ink); line-height: 1.55; max-width: 60ch; }
+    .criterion .fine {
+      margin-top: 1.2rem; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--muted); display: flex; gap: 0.9rem; flex-wrap: wrap;
+    }
+    .criterion .fine span::before {
+      content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%;
+      background: var(--sage); margin-right: 0.55rem; vertical-align: 0.2em;
+    }
+
+    /* One turn */
+    .turn {
+      padding-block: clamp(1.8rem, 1.2rem + 1.5vw, 2.8rem);
+      border-top: 1px solid var(--hairline);
+    }
+    .turn-head { display: flex; align-items: baseline; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .turn-index { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .turn-topic { font-family: var(--grotesk); font-weight: 600; font-size: var(--step-h3); letter-spacing: -0.01em; margin: 0; color: var(--ink); }
+
+    /* Prior context (bubbles) */
+    .context { display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.2rem; max-width: 46rem; }
+    .msg-role {
+      font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem;
+    }
+    .msg-facilitator .msg-role { color: var(--slate); }
+    .msg-body { padding: 0.7rem 0.9rem; border-radius: 8px; line-height: 1.5; font-size: 0.98rem; color: var(--ink); }
+    .msg-participant .msg-body { background: var(--surface-slate); }
+    .msg-facilitator .msg-body { background: var(--surface); border: 1px solid var(--hairline-soft); }
+
+    /* The turn under review */
+    .scored {
+      border: 1px solid oklch(0.82 0.035 165);
+      border-radius: 10px;
+      background: oklch(0.94 0.028 165);
+      padding: 1.05rem 1.2rem;
+      max-width: 46rem;
+      margin-bottom: 1.3rem;
+    }
+    .scored .msg-role {
+      color: var(--sage-ink); margin-bottom: 0.4rem;
+      display: inline-flex; align-items: center; gap: 0.55rem;
+    }
+    .scored .msg-role::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--sage-ink); display: inline-block;
+    }
+    .scored-body { font-size: 1.04rem; line-height: 1.5; color: var(--ink); margin: 0; font-weight: 500; }
+
+    /* Judgment */
+    .judge { display: flex; flex-direction: column; gap: 0.7rem; max-width: 46rem; }
+    .judge-row { display: flex; flex-wrap: wrap; gap: 0.55rem; align-items: center; }
+    .judge-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-right: 0.5rem; }
+    .judge .lopt {
+      font-size: 0.92rem; padding: 0.5rem 1.3rem; min-width: 5.4rem;
+      color: var(--ink); border-color: var(--hairline);
+    }
+    .judge .lopt:hover { border-color: var(--slate); color: var(--ink); }
+    .lopt.on[data-d="pass"] { background: var(--sage); border-color: var(--sage); color: oklch(0.22 0.03 165); }
+    .lopt.on[data-d="fail"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+    .judge .why { width: 100%; margin-top: 0.4rem; padding: 0.55rem 0.8rem; font-size: 0.95rem; }
+
+    /* Criterion critique */
+    .critique {
+      margin: clamp(2.5rem, 1.5rem + 3vw, 4rem) 0 8rem;
+      max-width: 62ch;
+      border: 1px solid var(--hairline);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    .critique summary { cursor: pointer; padding: 0.85rem 1rem; font-family: var(--grotesk); font-weight: 600; font-size: 0.95rem; color: var(--ink); }
+    .critique-body { padding: 0 1rem 1rem; }
+    .critique-body p { margin: 0 0 0.6rem; color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+    .critique-body textarea {
+      width: 100%; padding: 0.65rem 0.8rem;
+      font-family: var(--serif); font-size: 0.95rem; line-height: 1.5;
+      border: 1px solid var(--hairline); border-radius: 8px;
+      background: var(--bg); color: var(--ink);
+      resize: vertical; min-height: 6rem;
+    }
+    .critique-body textarea:focus { outline: none; border-color: var(--slate); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--hairline); padding-block: 2rem 3rem; }
+    footer .foot { display: flex; justify-content: space-between; gap: 1.4rem 2rem; flex-wrap: wrap; align-items: center; font-size: 0.88rem; color: var(--muted); }
+    footer nav { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+    footer nav a { color: var(--muted); }
+    footer nav a:hover { color: var(--ink); }
+    footer .foot-support { display: inline-flex; align-items: baseline; gap: 0.55rem; margin: 0; }
+
+    /* Sticky submit bar refinements */
+    .submitbar .btn { font-size: 0.92rem; padding: 0.6rem 1.05rem; }
+    .submitbar .progress { display: inline-flex; align-items: baseline; gap: 0.45rem; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rise { opacity: 1; transform: none; animation: none; }
+    }
+  </style>
 </head>
 <body>
-<div id="app">
-  <header>
-    <h1>OFL — Facilitation close review (demo)</h1>
-    <div id="jumplist" class="jumplist"></div>
-  </header>
-  <aside id="intro" class="intro-panel"><p>DEMO — this is a live preview of the Open Facilitation Library close-review labeling surface. The turns below are invented for the demo, not real sessions. To label a real calibration pack, message your OFL coordinator.</p><p>For each closing moment below, is this a good close? Mark Pass or Fail and give one line on why, in your own words. Trust your practice. There are no trick questions, and disagreement with the stated criterion is welcome (there is a box for that at the bottom).</p><p>How this becomes calibration: each labeled turn becomes a few-shot example in an LLM judge's prompt. A judge with zero labels tends to over-approve fluent-but-generic facilitation, because a general-purpose model's default taste rewards fluency. A judge trained on labels from practicing facilitators scores like the labelers do. That is what the Open Facilitation Library is calibrating: the judgment behind the number, not just the number.</p><p>The judge is advisory only. It flags for review; it never certifies or blocks anything. Your name is not attached to your labels unless you want credit.</p><p>This demo takes about 5 to 7 minutes. Your progress saves in the browser automatically, so you can close and come back. When done, press &quot;Export labels.json&quot; to see the file that would come back on a real pack.</p></aside>
-  <main id="turn-view"></main>
-  <section id="critiques" class="critiques"><div class="critiques-title">Optional: anything you would change about a criterion itself?</div><details class="critique-box"><summary>closing_checkpoint_discipline</summary><textarea data-critique="closing_checkpoint_discipline" placeholder="Optional note on this criterion's wording"></textarea></details></section>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="wordmark" href="/" aria-label="Open Facilitation Library home">OFL</a>
+      <nav class="topnav" aria-label="Primary">
+        <a href="/facilitators/">Facilitators</a>
+        <a href="/runtimes/">Runtimes</a>
+        <a href="https://wiki.openfac.org">Wiki</a>
+        <a href="https://github.com/Open-Facilitation-Library">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="app">
+      <section class="calib-intro">
+        <p class="eyebrow">Close review · Demo</p>
+        <h1>Judge each close, tell us why.</h1>
+        <p class="lead">Below are four closing moments from AI-facilitated conversations. For each one, mark whether it is a good close and give one line on why, in your own words. Trust your practice. Disagreement with the stated criterion is welcome (there is a box for that at the bottom).</p>
+        <p class="lead" style="margin-top: 1rem;">These closing turns are invented for the demo. To label a real calibration pack, message your OFL coordinator.</p>
+        <details class="rubric">
+          <summary>How this becomes calibration</summary>
+          <p>Each labelled turn becomes a few-shot example in an LLM judge's prompt. A judge with zero labels tends to over-approve fluent-but-generic facilitation, because a general-purpose model's default taste rewards fluency. A judge trained on labels from practicing facilitators scores like the labellers do. That is what the Open Facilitation Library is calibrating: the judgment behind the number, not just the number. The judge is advisory only. It flags for review; it never certifies or blocks anything. Your name is not attached to your labels unless you want credit.</p>
+        </details>
+      </section>
+
+      <section>
+        <div class="criterion">
+          <p class="eyebrow">Criterion &middot; <span class="axis-key">closing_checkpoint_discipline</span></p>
+          <h2>Reflect back their words, then check.</h2>
+          <p>A good close does two things: (1) it reflects back the participant's own specific points, not a generic "great conversation!", and (2) it asks a quick check before finishing, such as "did I capture that right?" or "anything to add before I pass this on?". Pass only if it does BOTH. Fail if it closes without reflecting anything specific, if it checks without actually summarizing, if it summarizes faithfully but never checks, or if it asks a generic "would you like to continue or shall I summarize?" after the participant already said they were done.</p>
+          <div class="fine">
+            <span>Four turns</span>
+            <span>Progress saves in this browser</span>
+            <span>Export when done</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="turns"></section>
+
+      <details class="critique">
+        <summary>Optional: anything you would change about this criterion itself?</summary>
+        <div class="critique-body">
+          <p>Reword it, name a case it misses, flag ambiguity. Your note travels with the labels.</p>
+          <textarea id="critique-textarea" placeholder="Note on the closing_checkpoint_discipline criterion's wording"></textarea>
+        </div>
+      </details>
+    </main>
+  </div>
+
+  <div class="submitbar" id="submitbar" hidden>
+    <div class="submitbar-inner wrap">
+      <span class="progress"><strong id="jcount">0</strong> <span id="jlabel">of 4 marked</span></span>
+      <button type="button" id="submit" class="btn">Export labels.json</button>
+    </div>
+  </div>
+
   <footer>
-    <button type="button" id="prev">&larr; Prev</button>
-    <span id="progress" class="progress"></span>
-    <button type="button" id="next">Next &rarr;</button>
-    <button type="button" id="export" class="export">Export labels.json</button>
+    <div class="wrap foot">
+      <nav aria-label="Site">
+        <a href="/facilitators/">Facilitators</a>
+        <a href="/runtimes/">Runtimes</a>
+        <a href="https://wiki.openfac.org">Wiki</a>
+        <a href="https://github.com/Open-Facilitation-Library">GitHub</a>
+      </nav>
+      <p class="foot-support"><span class="foot-support-label">Supported by</span> <a href="https://www.mozillafoundation.org/">Mozilla Foundation</a></p>
+    </div>
   </footer>
-</div>
-<script id="data" type="application/json">{"records":[{"id":"demo-1","sessionTopic":"Sprint retrospective — what is working, what is not","context":[{"role":"assistant","content":"What's one thing about the last two weeks that has been getting in the way for you?"},{"role":"user","content":"Honestly the whole PR review dance. I open something, it sits three days, I ping someone, they leave two comments, I address them, another day passes, ship. For a two-day change that is a week of calendar time. And it is not any one person's fault, everyone is stretched."},{"role":"assistant","content":"So the friction is not individual, it is the queue itself — reviews stacking up until the change ages faster than it moves. Would a shorter default SLA on first pass help, or is it more about who picks a review up (rotation vs volunteer)?"},{"role":"user","content":"Rotation would help more than SLA. SLAs turn into shame. If someone was clearly on the hook it moves. And I'm out of steam on this, I need to jump to something else."}],"turn":"So what you would change is who owns the first-pass review — a rotation, so it is clear whose queue a PR belongs to, rather than SLA pressure that reads as shame. Does that match what you want to bring into the retro next steps, or is there a piece I have simplified?","labels":{}},{"id":"demo-2","sessionTopic":"Neighborhood affordable-housing tradeoffs","context":[{"role":"assistant","content":"When you picture our neighborhood ten years from now, what does 'succeeding on housing' look like to you?"},{"role":"user","content":"That my kids' generation could actually afford to live here. Right now nobody under forty buys a house on this block, they rent from someone who already owns two. So we lose the age mix. And I do not want a Manhattan of luxury towers either — I have watched what that does to neighborhoods."},{"role":"assistant","content":"You are pointing at two failure modes at once: displacement of the next generation because ownership is out of reach, and displacement of character if the answer is dense luxury development. What kinds of housing would sit inside the middle you are describing — the both-and version?"},{"role":"user","content":"Missing middle. Duplexes, small apartment buildings, ADUs. Not high-rises. And some ownership pathway for people who grew up here — first-right-of-refusal or a community land trust. I'm done."}],"turn":"Thanks for that. What I heard from you is a vision that centers on generational continuity — young people from this neighborhood being able to stay and buy — through 'missing middle' housing types (duplexes, small buildings, ADUs) rather than dense luxury development, and an ownership pathway for people who grew up here, such as a community land trust or first-right-of-refusal. That is a clear picture of the both-and you want, and I will carry it forward.","labels":{}},{"id":"demo-3","sessionTopic":"Considering a career change from law to teaching","context":[{"role":"assistant","content":"You mentioned you have been thinking about leaving law. What is pulling you toward teaching specifically, versus the many other things a career change could be?"},{"role":"user","content":"I have done pro bono tutoring for six years. Every time I finish one I feel more like myself than I do at my firm. And I am forty-two. If I'm going to do this, the runway is getting shorter."},{"role":"assistant","content":"You are weighing evidence you already have — the tutoring feels like coming home — against a real cost, that you built a legal career and you would be trading a lot of it. What have you not tested yet that would make this decision harder to unmake?"},{"role":"user","content":"I have not sat in a real school and taught for a full week. All my tutoring is one-on-one. Classroom is different. I should probably shadow someone first before I quit anything. That's my main takeaway."}],"turn":"Thanks for sharing that. Anything else you would like to add before we wrap up?","labels":{}},{"id":"demo-4","sessionTopic":"Community water-management priorities","context":[{"role":"assistant","content":"What matters most to you about how the community handles water?"},{"role":"user","content":"Groundwater. The wells are dropping every year and if we do not set a shared limit soon we will not have wells at all in ten years."},{"role":"assistant","content":"A shared limit on groundwater draw. Would you want that limit set by usage type (agriculture vs households) or purely per-household, and does enforcement matter to you as much as the number itself?"},{"role":"user","content":"Per usage type, with enforcement. A limit without enforcement is theatre. And I'm done, that's my main point."}],"turn":"So the ask is a shared groundwater limit set per usage type, with real enforcement, because a number on paper is theatre. Would you like to continue exploring this or shall I summarize?","labels":{}}],"axes":["closing_checkpoint_discipline"],"opts":{"title":"OFL — Facilitation close review (demo)","intro":["DEMO — this is a live preview of the Open Facilitation Library close-review labeling surface. The turns below are invented for the demo, not real sessions. To label a real calibration pack, message your OFL coordinator.","For each closing moment below, is this a good close? Mark Pass or Fail and give one line on why, in your own words. Trust your practice. There are no trick questions, and disagreement with the stated criterion is welcome (there is a box for that at the bottom).","How this becomes calibration: each labeled turn becomes a few-shot example in an LLM judge's prompt. A judge with zero labels tends to over-approve fluent-but-generic facilitation, because a general-purpose model's default taste rewards fluency. A judge trained on labels from practicing facilitators scores like the labelers do. That is what the Open Facilitation Library is calibrating: the judgment behind the number, not just the number.","The judge is advisory only. It flags for review; it never certifies or blocks anything. Your name is not attached to your labels unless you want credit.","This demo takes about 5 to 7 minutes. Your progress saves in the browser automatically, so you can close and come back. When done, press \"Export labels.json\" to see the file that would come back on a real pack."],"criteria":{"closing_checkpoint_discipline":"A good close does two things: (1) it reflects back the participant's OWN specific points, not a generic \"great conversation!\", and (2) it asks a quick check before finishing, like \"did I capture that right?\" or \"anything to add before I pass this on?\". Pass only if it does BOTH. Fail if it closes without reflecting anything specific, if it checks without actually summarizing, if it summarizes faithfully but never checks, or if it asks a generic \"would you like to continue or shall I summarize?\" after the participant already said they were done."},"critiqueField":true}}</script>
-<script>(function () {
-  var dataEl = document.getElementById("data");
-  var data = JSON.parse(dataEl.textContent);
-  var records = data.records;
-  var axes = data.axes;
-  var STORAGE_KEY = "har1039-labels";
-  var FEEDBACK_KEY = "har1039-criterion-feedback";
-  var opts = data.opts || null;
-  var labels = {};
-  try {
-    var saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) labels = JSON.parse(saved);
-  } catch (e) {}
-  var criterionFeedback = {};
-  try {
-    var savedFb = localStorage.getItem(FEEDBACK_KEY);
-    if (savedFb) criterionFeedback = JSON.parse(savedFb);
-  } catch (e) {}
-  var current = 0;
 
-  function escapeHtml(s) {
-    return String(s)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
-  }
+  <script>
+    /* --- Data ------------------------------------------------------- */
+    const AXIS = 'closing_checkpoint_discipline';
 
-  function save() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(labels));
-    } catch (e) {}
-    renderProgress();
-    renderJumpList();
-  }
+    const RECORDS = [
+      {
+        id: 'demo-1',
+        sessionTopic: 'Sprint retrospective, what is working and what is not',
+        context: [
+          { role: 'assistant', content: "What's one thing about the last two weeks that has been getting in the way for you?" },
+          { role: 'user', content: "Honestly the whole PR review dance. I open something, it sits three days, I ping someone, they leave two comments, I address them, another day passes, ship. For a two-day change that is a week of calendar time. And it is not any one person's fault, everyone is stretched." },
+          { role: 'assistant', content: "So the friction is not individual, it is the queue itself, reviews stacking up until the change ages faster than it moves. Would a shorter default SLA on first pass help, or is it more about who picks a review up (rotation vs volunteer)?" },
+          { role: 'user', content: "Rotation would help more than SLA. SLAs turn into shame. If someone was clearly on the hook it moves. And I'm out of steam on this, I need to jump to something else." }
+        ],
+        turn: "So what you would change is who owns the first-pass review, a rotation, so it is clear whose queue a PR belongs to, rather than SLA pressure that reads as shame. Does that match what you want to bring into the retro next steps, or is there a piece I have simplified?"
+      },
+      {
+        id: 'demo-2',
+        sessionTopic: 'Neighborhood affordable-housing tradeoffs',
+        context: [
+          { role: 'assistant', content: "When you picture our neighborhood ten years from now, what does 'succeeding on housing' look like to you?" },
+          { role: 'user', content: "That my kids' generation could actually afford to live here. Right now nobody under forty buys a house on this block, they rent from someone who already owns two. So we lose the age mix. And I do not want a Manhattan of luxury towers either, I have watched what that does to neighborhoods." },
+          { role: 'assistant', content: "You are pointing at two failure modes at once: displacement of the next generation because ownership is out of reach, and displacement of character if the answer is dense luxury development. What kinds of housing would sit inside the middle you are describing, the both-and version?" },
+          { role: 'user', content: "Missing middle. Duplexes, small apartment buildings, ADUs. Not high-rises. And some ownership pathway for people who grew up here, first-right-of-refusal or a community land trust. I'm done." }
+        ],
+        turn: "Thanks for that. What I heard from you is a vision that centers on generational continuity, young people from this neighborhood being able to stay and buy, through 'missing middle' housing types (duplexes, small buildings, ADUs) rather than dense luxury development, and an ownership pathway for people who grew up here, such as a community land trust or first-right-of-refusal. That is a clear picture of the both-and you want, and I will carry it forward."
+      },
+      {
+        id: 'demo-3',
+        sessionTopic: 'Considering a career change from law to teaching',
+        context: [
+          { role: 'assistant', content: "You mentioned you have been thinking about leaving law. What is pulling you toward teaching specifically, versus the many other things a career change could be?" },
+          { role: 'user', content: "I have done pro bono tutoring for six years. Every time I finish one I feel more like myself than I do at my firm. And I am forty-two. If I'm going to do this, the runway is getting shorter." },
+          { role: 'assistant', content: "You are weighing evidence you already have, the tutoring feels like coming home, against a real cost, that you built a legal career and you would be trading a lot of it. What have you not tested yet that would make this decision harder to unmake?" },
+          { role: 'user', content: "I have not sat in a real school and taught for a full week. All my tutoring is one-on-one. Classroom is different. I should probably shadow someone first before I quit anything. That's my main takeaway." }
+        ],
+        turn: "Thanks for sharing that. Anything else you would like to add before we wrap up?"
+      },
+      {
+        id: 'demo-4',
+        sessionTopic: 'Community water-management priorities',
+        context: [
+          { role: 'assistant', content: 'What matters most to you about how the community handles water?' },
+          { role: 'user', content: "Groundwater. The wells are dropping every year and if we do not set a shared limit soon we will not have wells at all in ten years." },
+          { role: 'assistant', content: 'A shared limit on groundwater draw. Would you want that limit set by usage type (agriculture vs households) or purely per-household, and does enforcement matter to you as much as the number itself?' },
+          { role: 'user', content: "Per usage type, with enforcement. A limit without enforcement is theatre. And I'm done, that's my main point." }
+        ],
+        turn: "So the ask is a shared groundwater limit set per usage type, with real enforcement, because a number on paper is theatre. Would you like to continue exploring this or shall I summarize?"
+      }
+    ];
 
-  function saveFeedback() {
-    try {
-      localStorage.setItem(FEEDBACK_KEY, JSON.stringify(criterionFeedback));
-    } catch (e) {}
-  }
+    /* --- State ------------------------------------------------------ */
+    const STORE = 'ofl-close-review-v1';
+    const state = (function(){
+      try { return JSON.parse(localStorage.getItem(STORE)) || { labels: {}, criterionFeedback: '' }; }
+      catch(e) { return { labels: {}, criterionFeedback: '' }; }
+    })();
 
-  function wireCritiques() {
-    var boxes = document.querySelectorAll("[data-critique]");
-    Array.prototype.forEach.call(boxes, function (ta) {
-      var axis = ta.getAttribute("data-critique");
-      if (criterionFeedback[axis]) ta.value = criterionFeedback[axis];
-      ta.addEventListener("input", function () {
-        criterionFeedback[axis] = ta.value;
-        saveFeedback();
-      });
-    });
-  }
-
-  function isTurnComplete(id) {
-    var l = labels[id];
-    if (!l) return false;
-    return axes.every(function (axis) {
-      var a = l[axis];
-      if (!a || !a.label) return false;
-      if (a.label === "fail" && !(a.reason && a.reason.trim())) return false;
-      return true;
-    });
-  }
-
-  function countComplete() {
-    return records.filter(function (r) { return isTurnComplete(r.id); }).length;
-  }
-
-  function renderProgress() {
-    var el = document.getElementById("progress");
-    el.textContent = countComplete() + "/" + records.length + " fully labeled";
-  }
-
-  function renderJumpList() {
-    var el = document.getElementById("jumplist");
-    el.innerHTML = records.map(function (r, i) {
-      var cls = isTurnComplete(r.id) ? "dot dot-done" : "dot";
-      if (i === current) cls += " dot-current";
-      return "<button type=\"button\" class=\"" + cls + "\" data-idx=\"" + i + "\" title=\"" + escapeHtml(r.id) + "\">" + (i + 1) + "</button>";
-    }).join("");
-    Array.prototype.forEach.call(el.querySelectorAll("button"), function (btn) {
-      btn.addEventListener("click", function () {
-        current = Number(btn.getAttribute("data-idx"));
-        renderTurn();
-      });
-    });
-  }
-
-  function bubbleHtml(m) {
-    var role = m.role === "user" ? "participant" : "facilitator";
-    return "<div class=\"bubble bubble-" + role + "\"><span class=\"bubble-role\">" + role + "</span>" + escapeHtml(m.content) + "</div>";
-  }
-
-  function axisBlockHtml(record, axis) {
-    var l = (labels[record.id] && labels[record.id][axis]) || { label: "", reason: "" };
-    var passActive = l.label === "pass" ? " active" : "";
-    var failActive = l.label === "fail" ? " active" : "";
-    var placeholder = l.label === "fail" ? "reason (required)" : "reason (optional, encouraged)";
-    return (
-      "<div class=\"axis-block\" data-axis=\"" + escapeHtml(axis) + "\">" +
-      "<div class=\"axis-name\">" + escapeHtml(axis) + "</div>" +
-      ((opts && opts.criteria && opts.criteria[axis]) ? "<div class=\"axis-criteria\">" + escapeHtml(opts.criteria[axis]) + "</div>" : "") +
-      "<div class=\"axis-toggles\">" +
-      "<button type=\"button\" class=\"toggle toggle-pass" + passActive + "\" data-label=\"pass\">Pass</button>" +
-      "<button type=\"button\" class=\"toggle toggle-fail" + failActive + "\" data-label=\"fail\">Fail</button>" +
-      "</div>" +
-      "<input type=\"text\" class=\"axis-reason\" placeholder=\"" + placeholder + "\" value=\"" + escapeHtml(l.reason || "") + "\" />" +
-      "</div>"
-    );
-  }
-
-  function renderTurn() {
-    var r = records[current];
-    var view = document.getElementById("turn-view");
-    var contextHtml = r.context.map(bubbleHtml).join("");
-    var axesHtml = axes.map(function (axis) { return axisBlockHtml(r, axis); }).join("");
-    view.innerHTML =
-      "<div class=\"turn-header\">" +
-        "<span class=\"turn-index\">Turn " + (current + 1) + " / " + records.length + "</span>" +
-        "<span class=\"turn-topic\">" + escapeHtml(r.sessionTopic) + "</span>" +
-        "<span class=\"turn-bucket\">" + escapeHtml(r.bucket || "") + "</span>" +
-      "</div>" +
-      "<div class=\"context\">" + contextHtml + "</div>" +
-      "<div class=\"scored-turn\"><div class=\"scored-turn-label\">TURN TO SCORE</div><div class=\"scored-turn-content\">" + escapeHtml(r.turn) + "</div></div>" +
-      "<div class=\"axes\">" + axesHtml + "</div>";
-
-    Array.prototype.forEach.call(view.querySelectorAll(".toggle"), function (btn) {
-      btn.addEventListener("click", function () {
-        var block = btn.closest(".axis-block");
-        var axis = block.getAttribute("data-axis");
-        var label = btn.getAttribute("data-label");
-        labels[r.id] = labels[r.id] || {};
-        labels[r.id][axis] = labels[r.id][axis] || { label: "", reason: "" };
-        labels[r.id][axis].label = label;
-        save();
-        renderTurn();
-      });
-    });
-    Array.prototype.forEach.call(view.querySelectorAll(".axis-reason"), function (input) {
-      input.addEventListener("input", function () {
-        var block = input.closest(".axis-block");
-        var axis = block.getAttribute("data-axis");
-        labels[r.id] = labels[r.id] || {};
-        labels[r.id][axis] = labels[r.id][axis] || { label: "", reason: "" };
-        labels[r.id][axis].reason = input.value;
-        save();
-      });
-    });
-
-    renderProgress();
-    renderJumpList();
-  }
-
-  document.getElementById("prev").addEventListener("click", function () {
-    current = Math.max(0, current - 1);
-    renderTurn();
-  });
-  document.getElementById("next").addEventListener("click", function () {
-    current = Math.min(records.length - 1, current + 1);
-    renderTurn();
-  });
-  document.getElementById("export").addEventListener("click", function () {
-    var done = countComplete();
-    if (done < records.length) {
-      var proceed = window.confirm(
-        done + "/" + records.length + " turns fully labeled. Export anyway?"
-      );
-      if (!proceed) return;
+    function persist() {
+      try { localStorage.setItem(STORE, JSON.stringify(state)); } catch(e) {}
+      updateProgress();
     }
-    var exportData = (opts && (opts.intro || opts.criteria || opts.critiqueField))
-      ? { labels: labels, criterionFeedback: criterionFeedback }
-      : labels;
-    var blob = new Blob([JSON.stringify(exportData, null, 2)], { type: "application/json" });
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement("a");
-    a.href = url;
-    a.download = "labels.json";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  });
 
-  renderTurn();
-  wireCritiques();
-})();</script>
+    /* --- Escape ----------------------------------------------------- */
+    function esc(t) {
+      return String(t)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    /* --- Render ----------------------------------------------------- */
+    const turnsEl = document.getElementById('turns');
+    RECORDS.forEach(function(rec, i) {
+      const wrap = document.createElement('article');
+      wrap.className = 'turn';
+      wrap.dataset.id = rec.id;
+
+      const contextHtml = rec.context.map(function(c) {
+        const roleClass = c.role === 'user' ? 'msg-participant' : 'msg-facilitator';
+        const roleLabel = c.role === 'user' ? 'Participant' : 'Facilitator';
+        return (
+          '<div class="' + roleClass + '">' +
+            '<div class="msg-role">' + roleLabel + '</div>' +
+            '<div class="msg-body">' + esc(c.content) + '</div>' +
+          '</div>'
+        );
+      }).join('');
+
+      wrap.innerHTML =
+        '<div class="turn-head">' +
+          '<span class="turn-index">Turn ' + (i + 1) + ' of ' + RECORDS.length + '</span>' +
+          '<h2 class="turn-topic">' + esc(rec.sessionTopic) + '</h2>' +
+        '</div>' +
+        '<div class="context">' + contextHtml + '</div>' +
+        '<div class="scored">' +
+          '<div class="msg-role">Scored turn · facilitator close</div>' +
+          '<p class="scored-body">' + esc(rec.turn) + '</p>' +
+        '</div>' +
+        '<div class="judge">' +
+          '<div class="judge-row">' +
+            '<span class="judge-label">Your call</span>' +
+            '<button type="button" class="lopt" data-id="' + rec.id + '" data-d="pass">Pass</button>' +
+            '<button type="button" class="lopt" data-id="' + rec.id + '" data-d="fail">Fail</button>' +
+          '</div>' +
+          '<input type="text" class="why" data-id="' + rec.id + '" placeholder="One line on why, in your own words" />' +
+        '</div>';
+
+      turnsEl.appendChild(wrap);
+    });
+
+    /* --- Restore state to UI --------------------------------------- */
+    Object.keys(state.labels || {}).forEach(function(id) {
+      const rec = state.labels[id];
+      if (!rec) return;
+      const passBtn = turnsEl.querySelector('.lopt[data-id="' + id + '"][data-d="pass"]');
+      const failBtn = turnsEl.querySelector('.lopt[data-id="' + id + '"][data-d="fail"]');
+      if (rec.label === 'pass' && passBtn) passBtn.classList.add('on');
+      if (rec.label === 'fail' && failBtn) failBtn.classList.add('on');
+      const why = turnsEl.querySelector('.why[data-id="' + id + '"]');
+      if (why && rec.reason) why.value = rec.reason;
+    });
+    const critiqueEl = document.getElementById('critique-textarea');
+    if (critiqueEl && state.criterionFeedback) critiqueEl.value = state.criterionFeedback;
+
+    /* --- Interactions ---------------------------------------------- */
+    turnsEl.addEventListener('click', function(e) {
+      const btn = e.target.closest('.lopt');
+      if (!btn) return;
+      const id = btn.dataset.id;
+      const label = btn.dataset.d; // 'pass' | 'fail'
+      const passBtn = turnsEl.querySelector('.lopt[data-id="' + id + '"][data-d="pass"]');
+      const failBtn = turnsEl.querySelector('.lopt[data-id="' + id + '"][data-d="fail"]');
+      const currently = btn.classList.contains('on');
+      passBtn.classList.remove('on');
+      failBtn.classList.remove('on');
+      if (!currently) {
+        btn.classList.add('on');
+        state.labels[id] = state.labels[id] || {};
+        state.labels[id].label = label;
+      } else {
+        if (state.labels[id]) delete state.labels[id].label;
+        if (state.labels[id] && !state.labels[id].reason) delete state.labels[id];
+      }
+      persist();
+    });
+
+    turnsEl.addEventListener('input', function(e) {
+      const el = e.target;
+      if (!el.classList.contains('why')) return;
+      const id = el.dataset.id;
+      const val = el.value;
+      state.labels[id] = state.labels[id] || {};
+      state.labels[id].reason = val;
+      if (!val && !state.labels[id].label) delete state.labels[id];
+      persist();
+    });
+
+    if (critiqueEl) {
+      critiqueEl.addEventListener('input', function() {
+        state.criterionFeedback = critiqueEl.value;
+        persist();
+      });
+    }
+
+    /* --- Progress + submit bar ------------------------------------- */
+    const bar = document.getElementById('submitbar');
+    const jcount = document.getElementById('jcount');
+
+    function updateProgress() {
+      const marked = Object.keys(state.labels || {}).filter(function(id) {
+        return state.labels[id] && state.labels[id].label;
+      }).length;
+      jcount.textContent = marked;
+      bar.hidden = marked === 0;
+    }
+    updateProgress();
+
+    /* --- Export ---------------------------------------------------- */
+    document.getElementById('submit').addEventListener('click', function() {
+      const payload = {
+        axis: AXIS,
+        labels: state.labels || {},
+        criterionFeedback: state.criterionFeedback || ''
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'labels.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function() { URL.revokeObjectURL(url); }, 500);
+    });
+  </script>
 </body>
 </html>
