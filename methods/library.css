@@ -1,0 +1,26 @@
+.method-content { max-width: 68rem; }
+.library-intro { max-width: 56rem; }
+.library-intro h1 { max-width: 22ch; }
+.contents { display: flex; flex-wrap: wrap; column-gap: 1.5rem; row-gap: .6rem; margin-top: 1.8rem; }
+.contents a, .method-list a, .method-content .prose a, .library-intro .eyebrow a {
+  text-decoration: underline;
+  text-decoration-color: var(--sage);
+  text-underline-offset: .2em;
+}
+.contents a, .method-list a, .library-intro .eyebrow a { color: var(--slate); }
+.method-list, .stage-list { border-top: 1px solid var(--hairline); padding: 0; margin: 1.8rem 0 0; }
+.method-list { list-style: none; }
+.method-list li { display: grid; grid-template-columns: minmax(12rem, 1fr) 2fr; gap: .4rem 2rem; }
+.method-list li, .stage-list li { padding: 1.25rem 0; border-bottom: 1px solid var(--hairline); }
+.method-list h3, .stage-list h3 { font-size: var(--step-h3); }
+.method-list p, .stage-list p { margin: 0; max-width: 65ch; }
+.stage-list { margin-left: 2rem; }
+.stage-list li { padding-left: .5rem; }
+.stage-list p { margin-top: .45rem; }
+.stage-list li::marker { font-family: var(--mono); color: var(--slate); }
+.source-line { color: var(--muted); font-size: 1rem; }
+.method-content code { font: .85em var(--mono); overflow-wrap: anywhere; }
+@media (max-width: 40rem) {
+  .method-list li { grid-template-columns: 1fr; }
+  .topnav { flex-wrap: wrap; gap: .6rem 1rem; }
+}

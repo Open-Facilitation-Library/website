@@ -19,6 +19,7 @@
     <header class="topbar">
       <a class="wordmark" href="/" aria-label="Open Facilitation Library home">OFL</a>
       <nav class="topnav" aria-label="Primary">
+        <a href="/methods/">Methods</a>
         <a href="/facilitators/">Facilitators</a>
         <a href="/runtimes/">Runtimes</a>
         <a href="https://wiki.openfac.org">Wiki</a>
@@ -32,9 +33,16 @@
         <h1 class="rise">Open&#8209;source building blocks for agentic facilitation.</h1>
         <p class="lead rise">Specifications for facilitation methods, the evaluations that hold them to a standard, and the research behind both. Open source, and not tied to any one platform.</p>
         <div class="actions rise">
-          <a class="btn" href="https://wiki.openfac.org">Read the wiki</a>
-          <a class="link-arrow" href="https://github.com/Open-Facilitation-Library">Browse the GitHub</a>
+          <a class="btn" href="/methods/">Browse the method library</a>
+          <a class="link-arrow" href="https://wiki.openfac.org">Read the wiki</a>
         </div>
+      </section>
+
+      <section class="block" aria-labelledby="featured-method">
+        <p class="eyebrow">From the method library</p>
+        <h2 id="featured-method"><a href="/methods/after-action-review/">After-Action Review</a></h2>
+        <p class="prose">Your team has finished a project. What went as expected? What surprised people who saw the work up close? Use the review to compare accounts and agree on one change to try next time.</p>
+        <a class="link-arrow" href="/methods/after-action-review/">Explore the six stages and fork the method</a>
       </section>
 
       <section class="block" aria-labelledby="what">
@@ -72,10 +80,23 @@
   <section class="band" aria-labelledby="harmonica">
     <div class="wrap">
       <div class="inner">
-        <p class="eyebrow">Reference implementation</p>
-        <h2 id="harmonica">Where the specifications are proven.</h2>
-        <p class="prose">The specifications are developed against a working system. Harmonica, the AI facilitation platform, is the reference implementation: methods run there with real participants, and the evaluations are tested at scale. Because the specs and evaluations are open, the same methods run on any capable system.</p>
-        <p class="pill"><span class="dot" aria-hidden="true"></span> Open specifications, run anywhere</p>
+        <p class="eyebrow">Platforms and runtimes</p>
+        <h2 id="harmonica">How tools handle group input</h2>
+        <div class="routes">
+          <div class="route">
+            <h3><a href="https://github.com/Open-Facilitation-Library/workflows/blob/main/products/remesh.yaml">Remesh workflow</a></h3>
+            <p>In a live discussion, participants respond to a question and vote on one another’s replies. Inspect how those votes influence which views surface.</p>
+          </div>
+          <div class="route">
+            <h3><a href="https://github.com/Open-Facilitation-Library/workflows/blob/main/products/talk-to-the-city.yaml">Talk to the City workflow</a></h3>
+            <p>Participants can contribute in separate WhatsApp conversations. The workflow groups their responses into a topic tree that readers can explore in a report.</p>
+          </div>
+        </div>
+        <p class="prose">Harmonica is OFL’s reference implementation. To run a method on another system, check how it handles stages, participant voices, memory and evaluation.</p>
+        <div class="actions">
+          <a class="link-arrow" href="/runtimes/">Read the runtime requirements</a>
+          <a href="https://github.com/Open-Facilitation-Library/workflows/tree/main/products">Browse all workflow teardowns</a>
+        </div>
       </div>
     </div>
   </section>
